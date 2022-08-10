@@ -1,0 +1,150 @@
+.app__flex {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.pr {
+	position: relative;
+}
+
+.cp {
+	cursor: pointer;
+}
+
+.tr {
+	transition: all 0.3s ease-in-out;
+}
+
+.mh-100 {
+	min-height: 100vh;
+}
+
+.pa {
+	position: absolute;
+}
+
+.wh {
+	color: #fff;
+}
+
+.black {
+	color: #000;
+}
+
+.n-shadow {
+	  box-shadow: 0 0px 12px 0 rgba( 31, 38, 135, 0.17 );
+}
+
+	.header {
+		font-family: 'Poppins', sans-serif;
+	}
+
+
+
+@for $i from 1 through 100 {
+	.b-#{$i} {
+		bottom: #{$i}px;
+	}
+}
+
+@for $i from 1 through 100 {
+	.m-#{$i} {
+		margin: #{$i}px;
+	}
+}
+
+@for $i from 1 through 100 {
+	.mb-#{$i} {
+		margin-bottom: #{$i}px;
+	}
+}
+
+@for $i from 1 through 100 {
+	.mt-#{$i} {
+		margin-top: #{$i}px;
+	}
+}
+
+@for $i from 1 through 100 {
+	.ml-#{$i} {
+		margin-left: #{$i}px;
+	}
+}
+
+@for $i from 1 through 100 {
+	.w-#{$i} {
+		width: #{$i}#{"%"};
+	}
+}
+
+@for $i from 1 through 100 {
+	.h-#{$i} {
+		height: #{$i}#{"%"};
+	}
+}
+
+
+@for $i from 1 through 500 {
+	.wpx-#{$i} {
+		width: #{$i}px;
+	}
+}
+
+@for $i from 1 through 1000 {
+	.hpx-#{$i} {
+		height: #{$i}px;
+	}
+}
+
+@for $i from 1 through 100 {
+	.bdr-#{$i} {
+		border-radius: #{$i}#{"%"};
+	}
+}
+
+
+@for $i from 1 through 100 {
+	.bdrr-#{$i} {
+		border-radius: #{$i}px;
+	}
+}
+
+@for $i from 1 through 100 {
+	.p-#{$i} {
+		padding: #{$i}px;
+	}
+}
+
+@for $i from 1 through 100 {
+	.pb-#{$i} {
+		padding-bottom: #{$i}px;
+	}
+}
+
+@for $i from 1 through 100 {
+	.pt-#{$i} {
+		padding-top: #{$i}px;
+	}
+}
+@for $i from 1 through 500 {
+	.pl-#{$i} {
+		padding-left: #{$i}px;
+	}
+}
+
+@for $i from 1 through 100 {
+	.br-#{$i} {
+		border-radius: #{$i}px;
+	}
+}
+@for $i from 1 through 100 {
+	.fs-#{$i} {
+		font-size: #{$i}px;
+	}
+}
+@for $i from 1 through 1000 {
+	.fw-#{$i} {
+		font-weight: #{$i};
+	}
+}

@@ -1,0 +1,106 @@
+.wrapper {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+	max-width: 100vw;
+}
+
+.pink {
+	background-color: #fff;
+}
+
+.app__social {
+	height: 100%;
+	z-index: 2;
+
+	.icon {
+		background-color: #DA2879;
+		box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+
+		&:hover {
+			background-color: #b76935;
+		}
+	}
+
+	p {
+		background-color: rgba(0, 0, 0, 0.9);
+		padding: 4px 8px;
+		border-radius: 5px;
+		padding-bottom: 7px;
+		font-size: 14px;
+
+		bottom: 3px;
+		left: 45px;
+	}
+
+	@media screen and (max-width: 900px) {
+		display: none;
+	}
+}
+
+.home-social {
+/*	background: linear-gradient(
+			170deg,
+			rgba(49, 57, 73, 0.8) 20%,
+			rgba(49, 57, 73, 0.5) 20%,
+			rgba(49, 57, 73, 0.5) 35%,
+			rgba(41, 48, 61, 0.6) 35%,
+			rgba(41, 48, 61, 0.8) 45%,
+			rgba(31, 36, 46, 0.5) 45%,
+			rgba(31, 36, 46, 0.8) 75%,
+			rgba(49, 57, 73, 0.5) 75%
+		),
+		linear-gradient(
+				45deg,
+				rgba(20, 24, 31, 0.8) 0%,
+				rgba(41, 48, 61, 0.8) 50%,
+				rgba(82, 95, 122, 0.8) 50%,
+				rgba(133, 146, 173, 0.8) 100%
+			)
+			#313949; */
+	color: #fff;
+
+	&:hover {
+		background: #DA2879;
+	}
+}
+
+.about-social {
+	background-color: #2190FF;
+	color: #fff;
+
+	&:hover {
+		background-color: rgba(33,144,255,.9);
+	}
+}
+
+
+.projects-social {
+	color: #fff;
+
+	&:hover {
+		background: #000;
+		box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+	}
+}
+
+.home-background {
+	background: rgb(13,17,23);
+	color: #fff;
+}
+
+.about-background {
+	background: #F5F9FF;
+}
+
+.projects-background {
+	background-color: #14213d;
+	color: #fff;
+}
+
+.wr-flex {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+

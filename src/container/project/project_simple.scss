@@ -1,0 +1,53 @@
+.project-container {
+	h3 {
+		color: #2f3e46;
+	}
+}
+
+.projects::-webkit-scrollbar {
+	height: 8px;
+	width: 12px;
+	background: transparent;
+	transition: all 1s ease-in-out;
+}
+.swiper1 {
+	margin-bottom: 20;
+}
+
+.swiper2 {
+	border: 1px solid #ffafcc;
+	border-radius: 5px;
+	padding: 10px;
+
+	@media screen and (max-width: 400px) {
+		display: none;
+	}
+}
+
+.swiper-slide-thumb-active {
+	opacity: 0.5;
+}
+
+.swiper-button-prev {
+	background-image: url(../../assets//right-arrow-svgrepo-com.svg);
+	transform: rotateZ(180deg);
+}
+
+.swiper-button-prev::after {
+	display: none;
+}
+
+.swiper-button-next {
+	background-image: url(../../assets//right-arrow-svgrepo-com.svg);
+}
+
+.swiper-button-next::after {
+	display: none;
+}
+.swiper-button-next,
+.swiper-button-prev {
+	background-repeat: no-repeat;
+	background-size: 100% auto;
+	width: 40px;
+	background-position: center;
+}
