@@ -58,7 +58,20 @@
 }
 
 
-.project {
+.skills {
+	backdrop-filter: blur(4px);
+	-webkit-backdrop-filter: blur(4px);
+	.button {
+		color: #2d3236;
+	}
+
+	.slider {
+		background-color: #000;
+	}
+}
+
+
+.projects {
 	backdrop-filter: blur(4px);
 	-webkit-backdrop-filter: blur(4px);
 	.button {
@@ -67,6 +80,17 @@
 
 	.slider {
 		background-color: #fff;
+	}
+}
+
+
+.contact {
+	.button {
+		color: #2d3236;
+	}
+
+	.slider {
+		background-color: #2d3236;
 	}
 }
 

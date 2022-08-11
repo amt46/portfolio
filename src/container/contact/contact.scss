@@ -1,0 +1,12 @@
+.form {
+	flex-direction: column;
+
+	input, textarea {
+		width: 300px;
+		padding: 10px 20px;
+		border: 2px solid #D7DEE8;
+		margin: 10px;
+		outline: none;
+		border-radius: 10px;
+	}
+}

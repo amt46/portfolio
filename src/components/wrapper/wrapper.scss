@@ -1,8 +1,17 @@
 .wrapper {
 	display: flex;
-	justify-content: space-between;
-	align-items: flex-end;
-	max-width: 100vw;
+	width: 100%;
+	padding: 40px 0 0 0;
+
+	@media screen and ( max-width: 640px ) {
+		padding: 20px 0 0 0;
+	}
+}
+
+.app__wrapper {
+	flex: 1;
+	width: 100%;
+	flex-direction: column;
 }
 
 .pink {
@@ -10,11 +19,14 @@
 }
 
 .app__social {
-	height: 100%;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	flex-direction: column;
 	z-index: 2;
 
 	.icon {
-		background-color: #DA2879;
+		background-color: #da2879;
 		box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
 
 		&:hover {
@@ -39,7 +51,7 @@
 }
 
 .home-social {
-/*	background: linear-gradient(
+	/*	background: linear-gradient(
 			170deg,
 			rgba(49, 57, 73, 0.8) 20%,
 			rgba(49, 57, 73, 0.5) 20%,
@@ -61,19 +73,18 @@
 	color: #fff;
 
 	&:hover {
-		background: #DA2879;
+		background: #da2879;
 	}
 }
 
 .about-social {
-	background-color: #2190FF;
+	background-color: #2190ff;
 	color: #fff;
 
 	&:hover {
-		background-color: rgba(33,144,255,.9);
+		background-color: rgba(33, 144, 255, 0.9);
 	}
 }
-
 
 .projects-social {
 	color: #fff;
@@ -84,13 +95,21 @@
 	}
 }
 
+.skills-social {
+	color: #2d3236;
+}
+
 .home-background {
-	background: rgb(13,17,23);
+	background: rgb(13, 17, 23);
 	color: #fff;
 }
 
 .about-background {
-	background: #F5F9FF;
+	background: #f5f9ff;
+}
+
+.skills-background {
+	background: #f5f9ff;
 }
 
 .projects-background {
@@ -98,9 +117,15 @@
 	color: #fff;
 }
 
+.contact-background {
+	background-image: url(../../assets/bgWhite.png);
+	background-size: cover;
+	background-position: center;
+	background-repeat: repeat;
+}
+
 .wr-flex {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
-

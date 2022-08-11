@@ -17,8 +17,8 @@ const Social = ({ classNames }) => {
 			label: "Facebook",
 			link: "https://www.facebook.com/aung.832003/",
 		},
-		{ icon: FaTwitter, label: "Instagram", link: "" },
-		{ icon: IoLogoInstagram, label: "Twitter", link: "" },
+		{ icon: FaTwitter, label: "Twitter", link: "" },
+		{ icon: IoLogoInstagram, label: "Instagram", link: "" },
 		{ icon: FiYoutube, label: "YouTube", link: "" },
 	];
 

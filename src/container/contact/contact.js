@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Button from "@mui/material/Button";
 
+import MoonLoader from "react-spinners/MoonLoader";
 import { client } from "../../client";
 import "./contact.scss";
 
@@ -45,7 +46,7 @@ const Contact = () => {
 						<h1>Do you want to tell Something</h1>
 						<p>+959 750 151 241</p>
 						<p>amt.code.4621@gmail.com</p>
-						<form>
+						<form className="form wr-flex">
 							<input
 								name="name"
 								onChange={(e) => handleChange(e)}
@@ -63,13 +64,16 @@ const Contact = () => {
 								onChange={(e) => handleChange(e)}
 								placeholder="Your Message"
 							/>
-							<Button onClick={handleSubmit}>{loading ? "Sending" : "Send"}</Button>
+							<Button onClick={handleSubmit}>
+								{loading ? "Sending" : "Send"}{" "}
+								{loading && <MoonLoader size={20} />}
+							</Button>
 						</form>
 					</div>
 				) : (
 					<div className=""> Thank for Your Message </div>
 				)}
-				<div className="wr-flex flex-1">
+				<div className="wr-flex flex-initial w-60 bg-pink-600">
 					<h2>Sign up as a reviewer of my website</h2>
 				</div>
 			</div>

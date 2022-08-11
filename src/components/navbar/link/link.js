@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef} from "react";
 import Button from "@mui/material/Button";
 
 import nav from "./nav";
@@ -11,8 +11,9 @@ const Link = ({ refArray, setCls, cls }) => {
 		console.log(scrollY)
 		if (scrollY >= 100) setCls("home");
 		if (scrollY >= 600) setCls("about");
-		if (scrollY >= 1200) setCls("project");
-		if (scrollY >= 1800) setCls("bg-pink");
+		if (scrollY >= 1250) setCls("projects");
+		if (scrollY >= 1800) setCls("skills");
+		if (scrollY >= 2500) setCls("contact");
 		if (scrollY <= 99) setCls("nav");
 		if (scrollY <= 1200 && scrollY >= 680) setCls("about n-shadow");
 	}
@@ -20,15 +21,17 @@ const Link = ({ refArray, setCls, cls }) => {
 		const scrollY = window.pageYOffset;
 		console.log(scrollY)
 		if (scrollY >= 50) setCls("home");
-		if (scrollY >= 950) setCls("bg-pink");
-		if (scrollY >= 1600) setCls("bg-light");
-		if (scrollY >= 2300) setCls("bg-pink");
+		if (scrollY >= 950) setCls("about");
+		if (scrollY >= 1750) setCls("projects");
+		if (scrollY >= 2300) setCls("skills");
+		if (scrollY >= 2500) setCls("contact");
 		if (scrollY <= 59) setCls("nav");
+		if (scrollY <= 1749 && scrollY >= 1200) setCls("about n-shadow");
 	}
 
 
 	useEffect(() => {
-		if (window.innerWidth >= 990) {
+		if (window.innerWidth >= 900) {
 			function watchScroll() {
 				window.addEventListener("scroll", logit);
 			}

@@ -5,9 +5,15 @@ import "./wrapper.scss";
 
 const Wrapper = (Component, classNames, idName, pageRef) => () => {
 	return (
-		<div ref={pageRef} className={`${classNames + "-background"} wrapper body`} id={idName}>
+		<div
+			ref={pageRef}
+			className={`${classNames + "-background"} wrapper mh-100 body pr`}
+			id={idName}
+		>
 			<Social classNames={classNames} />
-			<Component />
+			<div className="app__wrapper app__flex">
+				<Component />
+			</div>
 		</div>
 	);
 };

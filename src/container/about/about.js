@@ -32,24 +32,24 @@ const About = () => {
 
 	if (family === "") {
 		return (
-			<div className="app__about pr pt-50 mh-100">
+			<div className="app__about pr">
 				<a ref={ltaRef} style={{ display: "none" }} href="#about">
 					none
 				</a>
-				<div className={`content mt-20 wr-flex pr ${readMore ? "mb-60" : "mb-40"}`}>
-					<div className="content-child">
-						<p className="header text-4xl fw-800 mt-30 mb-30">
+				<div className="mt-10 wr-flex pr">
+					<div className="w-90">
+						<p className="h text-4xl fw-800 mt-30 mb-30">
 							Welcome to{" "}
 							<span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
 								{" "}
 								My Portfolio website{" "}
 							</span>
 						</p>
-						<p className="intro mb-20">
+						<p className="fs-20 fw-600 mb-20">
 							What do I do and What's in it for you?
 						</p>
-						<div className={`hpx-300 ${readMore ? "sy" : ""}`}>
-							<p className="text">
+						<div className={`forcontent hpx-300 ${readMore ? "sy" : ""}`}>
+							<p className="p-t">
 								My goal is Mobile Developer. I want to use
 								Javascript for this and React Native. Because I
 								started programming with javascript from Msquare
@@ -66,7 +66,7 @@ const About = () => {
 								)}
 							</p>
 							{(bigWin || readMore) && (
-								<p className="text">
+								<p className="p-t">
 									There is one problem I have never worked
 									with a team. But I want start with you if
 									you are programmer. I want create that
@@ -104,7 +104,7 @@ const About = () => {
 							)}
 							{readMore && (
 								<p>
-									<p className="text">
+									<p className="p-t">
 										My goal is Mobile Developer. I want to
 										use Javascript for this and React
 										Native. Because I started programming
@@ -114,7 +114,7 @@ const About = () => {
 										there is no one who can explain Python
 										basic like Msquare Programming teacher.
 									</p>{" "}
-									<p className="text">
+									<p className="p-t">
 										My goal is Mobile Developer. I want to
 										use Javascript for this and React
 										Native. Because I started programming
@@ -124,7 +124,7 @@ const About = () => {
 										there is no one who can explain Python
 										basic like Msquare Programming teacher.
 									</p>{" "}
-									<p className="text">
+									<p className="p-t">
 										My goal is Mobile Developer. I want to
 										use Javascript for this and React
 										Native. Because I started programming
@@ -174,7 +174,7 @@ const About = () => {
 					/>
 				)}
 				{forimg && <Forfun setForimg={setForimg} />}
-				<div className="button w-100 wr-flex">
+				<div className="button w-100 wr-flex flex-wrap mt-40">
 					{["I know you", "About me", "My Skills"].map((i) => (
 						<Button
 							onClick={() => {

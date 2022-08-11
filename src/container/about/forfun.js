@@ -31,7 +31,7 @@ const Forfun = (props) => {
 						<p>That is crazy!</p>
 						<div
 							onClick={() => props.setForimg(false)}
-							className="close cp flex"
+							className="close cp wr-flex"
 						>
 							<CgClose />
 						</div>

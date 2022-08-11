@@ -18,8 +18,8 @@ function App() {
 	const HomeWrap = Wrapper(Header, "home", "home", homeRef);
 	const AboutWrap = Wrapper(About, "about", "about", aboutRef);
 	const ProjectWrap = Wrapper(Project, "projects", "projects", projectsRef);
-	const SkillsWrap = Wrapper(Skills, '', 'skills', skillsRef);
-	const ContactWrap = Wrapper(Contact, "pink", "contact", contactRef);
+	const SkillsWrap = Wrapper(Skills, 'skills', 'skills', skillsRef);
+	const ContactWrap = Wrapper(Contact, "contact", "contact", contactRef);
 
 	return (
 		<AnimatePresence>

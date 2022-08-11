@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 
 import Button from "@mui/material/Button";
 import Tilt from "react-parallax-tilt";
@@ -11,6 +11,8 @@ const Header = () => {
 	const [isImg, setIsImg] = useState(false);
 
 	const projectsRef = useRef(null);
+	const skillsRef = useRef(null);
+
 	const skills = [
 		{ name: "Node Js", image: images.node, class: "njs" },
 		{ name: "React", image: images.react, class: "r" },
@@ -27,43 +29,39 @@ const Header = () => {
 		e.target.style.setProperty("--y", y + "px");
 	};
 
-
-
 	return (
-		<div className="app__header wr-flex mh-100 w-100">
-			<Tilt className="tr photo ml-[5%]">
-				<div
-					className="image"
-				>
+		<div className="app__header flex w-100">
+			<Tilt className="img1 p-40 flex-auto w-32">
+				<div className="w-full h-[500px] mx-auto">
 					<img
-						className="pho mt-30 br-20 w-90"
+						className="w-full h-full object-cover rounded-xl"
 						src={images.amt}
 						alt="amt"
 					/>
 				</div>
 			</Tilt>
-			<div className="content pr wr-flex">
-				<div className="text p-20 mb-20">
-					<div className="t tr p-20 fw-800">
-						<p className="header text-4xl">
+			<div className="flex-auto w-64 p-40">
+				<div className="h-full rc flex flex-col justify-evenly">
+					<div className="">
+						<p className="h">
 							Junior Full Stack{" "}
 							<span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
 								{" "}
 								Web & Mobile Developer{" "}
 							</span>
 						</p>
-						<p className="p fw-500">
+						<p className="fs-20 fw-500 mt-20 mb-20">
 							Let Join your Development Team for My Experience
 						</p>
 					</div>
-					<div className="image w-70 h-50 wr-flex">
+					<div className="img2 w-[350px] h-[500px] hidden">
 						<img
-							className="br-20 w-100 h-100 object-cover"
+							className="w-full h-full object-cover bdrr-10"
 							src={images.amt}
 							alt="amt"
 						/>
 					</div>
-					<div className="container w-100 mt-90">
+					<div className="bc">
 						<Button
 							className="btn"
 							onMouseMove={hoverEffect}
@@ -74,7 +72,7 @@ const Header = () => {
 						<Button
 							className="btn"
 							onMouseMove={hoverEffect}
-							onClick={() => projectsRef.current.click()}
+							onClick={() => skillsRef.current.click()}
 						>
 							My Skills
 						</Button>
@@ -85,17 +83,24 @@ const Header = () => {
 						>
 							none
 						</a>
+						<a
+							href="#skills"
+							ref={skillsRef}
+							style={{ display: "none" }}
+						>
+							none
+						</a>
 					</div>
 				</div>
-				<div className="icon-header wr-flex">
+				<div className="flex">
 					{skills.map((i) => {
 						return (
-							<div key={i.name} className={`${i.class} pa`}>
-								<div className="img-container flex">
+							<div key={i.name} className={`${i.class} sk wpx-70 pa`}>
+								<div className="">
 									<img
 										className={`${
 											i.name === "React" ? "App-logo" : ""
-										} icon w-100 tr`}
+										} icon w-full h-full object-cover tr`}
 										onMouseEnter={() => {
 											if (i.name === "Javascript")
 												setIsImg(!isImg);
@@ -116,7 +121,7 @@ const Header = () => {
 												}
 											>
 												<img
-													className="msteacher pa w-75 tr cp"
+													className="mt"
 													src={images.msprogram}
 													alt="msquareprogrammingteacher"
 												/>

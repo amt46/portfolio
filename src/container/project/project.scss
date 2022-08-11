@@ -12,3 +12,22 @@
 		color: rgba(255, 255, 255, 0.9);
 	}
 }
+
+.bi {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	opacity: 0;
+	z-index: 0;
+	  filter: blur(8px);
+  -webkit-filter: blur(8px);
+}
+
+.i-2 {
+	flex-grow: 1;
+}

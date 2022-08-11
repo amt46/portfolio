@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
 .app__flex {
 	display: flex;
 	align-items: center;
@@ -32,15 +33,23 @@
 	color: #000;
 }
 
+.ma {
+	margin: auto;
+}
+
 .n-shadow {
 	  box-shadow: 0 0px 12px 0 rgba( 31, 38, 135, 0.17 );
 }
 
-	.header {
-		font-family: 'Poppins', sans-serif;
-	}
+.h {
+	font-family: 'Poppins', sans-serif;
+	font-size: 40px;
+	font-weight: 800;
+}
 
-
+.z {
+	z-index: 9;
+}
 
 @for $i from 1 through 100 {
 	.b-#{$i} {
@@ -85,7 +94,7 @@
 }
 
 
-@for $i from 1 through 500 {
+@for $i from 1 through 1000 {
 	.wpx-#{$i} {
 		width: #{$i}px;
 	}
