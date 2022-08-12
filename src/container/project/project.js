@@ -1,223 +1,166 @@
-import { useState, useEffect } from "react";
+import React, { useEffect, useState, useRef } from "react";
+
 import { IoChevronForward, IoChevronBack } from "react-icons/io5";
-import MoonLoader from "react-spinners/MoonLoader";
-
 import { motion } from "framer-motion";
-
-import { urlFor, client } from "../../client";
+import { useSwipeable } from "react-swipeable";
+import { client, urlFor } from "../../client";
 
 import "./project.scss";
 
 const Project = () => {
-	const [projects, setProjects] = useState([]);
-	const [sub, setSub] = useState([0, 1, 2]);
-	const [forSlide, setForSlide] = useState([]);
-	const [toShow, setToShow] = useState();
-	const [loading, setLoading] = useState(false);
-	const [backDisable, setBackDisable] = useState(false);
-	const [nextDisable, setNextDisable] = useState(false);
+	const [p, setP] = useState([]);
+	const [po, setPo] = useState(0);
+	const [size, setSize] = useState({
+		h: window.innerHeight,
+		w: window.innerWidth,
+	});
+
+	const handlers = useSwipeable({ onSwiped: () => console.log("swiped") });
+
+	// setup ref for your usage
+	const myRef = React.useRef();
+
+	const refPassthrough = (el) => {
+		// call useSwipeable ref prop with el
+		handlers.ref(el);
+
+		// set myRef el so you can access it yourself
+		myRef.current = el;
+	};
 
 	useEffect(() => {
 		const query = '*[_type == "projects"]';
 		client
 			.fetch(query)
 			.then((data) => {
-				setProjects(data);
-				setForSlide(data.filter((x) => sub.includes(data.indexOf(x))));
+				setP(data);
 			})
 			.catch((err) => console.log(err));
 	}, []);
 
 	useEffect(() => {
-		if (forSlide)
-			setForSlide(
-				projects.filter((x) => sub.includes(projects.indexOf(x)))
-			);
-	}, [sub]);
-
-	useEffect(() => {
-		if (toShow) return;
-		if (forSlide) setToShow(forSlide[0]);
-	}, [forSlide, setToShow, toShow]);
-
-	const onHandleClick = (e, i) => {
-		const a = forSlide.indexOf(i);
-		setToShow(i);
-		console.log(a, forSlide[2]);
-		if (a === 2) nextSlide();
-		if (a === 0) preSlide();
-	};
-
-	const nextBtn = () => {
-		const b = forSlide.indexOf(toShow);
-		console.log("i", b);
-		if (b === 2) {
-			nextSlide();
-		} else if (b === 0) {
-			setToShow(forSlide[b + 1]);
-		} else if (b === 1) {
-			setToShow(forSlide[b + 1]);
-			nextSlide();
-		}
-	};
-	const preBtn = () => {
-		const b = forSlide.indexOf(toShow);
-		console.log("i", b);
-		if (b === 0) {
-			preSlide();
-		} else if (b === 2) {
-			setToShow(forSlide[b - 1]);
-		} else if (b === 1) {
-			setToShow(forSlide[b - 1]);
-			preSlide();
-		}
-	};
-
-	const nextSlide = () => {
-		setBackDisable(false);
-		let a = [];
-		for (let i of sub) {
-			if (i === projects.length - 1) return setNextDisable(true);
-			setNextDisable(false);
-			a.push(i + 1);
-		}
-		setSub(a);
-	};
-
-	function poopityScoop() {
-		window.ononline = (event) => {
-			console.log("Back Online");
+		const resize = () => {
+			setSize({
+				h: window.innerHeight,
+				w: window.innerWidth,
+			});
+			console.log(size);
 		};
 
-		window.onoffline = (event) => {
-			console.log("Connection Lost");
+		window.addEventListener("resize", resize);
+
+		return (_) => {
+			window.removeEventListener("resize", resize);
 		};
-	}
-	poopityScoop();
+	});
 
-	const preSlide = () => {
-		setNextDisable(false);
-		let a = [];
-		for (let i of sub) {
-			if (i <= 0) return setBackDisable(true);
-			setBackDisable(false);
-			a.push(i - 1);
+	const onr = () => {
+		if (po < p.length - 1) {
+			setPo(po + 1);
 		}
-		setSub(a);
 	};
-
-	const navClick = (e, i) => {
-		setToShow(i);
-		const a = projects.indexOf(i);
-		if (a === projects.length - 1) {
-			setNextDisable(true);
-		} else if (a === 0) {
-			setBackDisable(true);
-		} else {
-			setBackDisable(false);
-			setNextDisable(false);
+	const onl = () => {
+		if (po > 0) {
+			setPo(po - 1);
 		}
-		if (a <= 0) {
-			return setSub([0, 1, 2]);
-		} else if (a >= projects.length - 1) {
-			return setSub([a - 2, a - 1, a]);
-		}
-
-		setSub([a - 1, a, a + 1]);
 	};
 
 	return (
-		<div className="w-99 flex items-center">
-			{/*toShow && (
-				<div className="">
-					<img
+		<div
+			{...handlers}
+			ref={refPassthrough}
+			className="overflow-hidden wr-flex w-100 h-90 pb-30"
+		>
+			<div className="flex overflow-hidden">
+				{p?.map((i, k) => (
+					<motion.img
+						initial={{ rotation: -180 }}
+						animate={{
+							left: `${k - po}vw`,
+							scale: k === po ? 1 : 1,
+							opacity: k === po ? .1 : 0,
+						}}
+						key={k}
 						className="bi w-full h-full object-cover"
-						src={urlFor(toShow.imageurl)}
-						alt={toShow?.name}
+						src={urlFor(i.imageurl)}
+						alt={i.name}
 					/>
-				</div>
-			)*/}
+				))}
+			</div>
 			<motion.button
-				disabled={backDisable ? true : false}
-				whileTap={backDisable ? {} : { scale: 0.9 }}
-				style={backDisable ? { color: "rgba(255, 255, 255, 0.5)" } : {}}
-				className="z for wr-flex"
-				onClick={preBtn}
+				disabled={po === 0 ? true : false}
+				whileTap={po === 0 ? {} : { scale: 0.9 }}
+				style={
+					po === 0
+						? { color: "rgba(255, 255, 255, 0.5)" }
+						: { cursor: "pointer" }
+				}
+				className="z for wr-flex fs-30"
+				onClick={onl}
 			>
-				{toShow && <IoChevronBack />}
+				{p && <IoChevronBack />}
 			</motion.button>
-			<div className="z i-2">
-				<div className="mx-auto">
-					<div className="p-20 hpx-400 mx-auto max-w-[900px] ">
-						<div className="">
-							{!toShow && (
-								<div className="">
-									<MoonLoader color="#fff" size={30} />
-								</div>
-							)}
-							<p className="">{toShow?.name}</p>
-							<div className="">
-								<div className="">
-									{toShow && (
-										<div className="wpx-400 hpx-300">
-											<img
-												className="z w-full h-full object-cover"
-												src={urlFor(toShow.imageurl)}
-												alt={toShow?.name}
-											/>
-										</div>
-									)}
-								</div>
-								{toShow && <p className="">{toShow.desc}</p>}
-							</div>
-						</div>
-					</div>
-					<div className="flex mt-0 wpx-100 mx-auto hpx-50 z">
-						{projects?.map((i, j) => (
-							<div key={j} className="pr mx-auto">
-								<div
-									onClick={(e) => {
-										navClick(e, i);
-									}}
-									className={`${
-										toShow?.name === i.name
-											? "bg-white"
-											: "bg-slate-500"
-									} cp z wpx-10 hpx-10 bdr-50 pa`}
-								/>
-							</div>
-						))}
-					</div>
-					<div className="flex justify-center mx-auto w-100">
-						{forSlide?.map((i, index) => (
-							<div
-								onClick={(e) => onHandleClick(e, i)}
-								key={index}
-								className={`${
-									i.name === toShow?.name
-										? "active"
-										: "opacity-75"
-								} wpx-100 hpx-100 m-5`}
-							>
+			<div
+				style={{ touchAction: "auto" }}
+				className="pr w-100 hpx-490 wr-flex"
+			>
+				{p?.map((i, j) => (
+					<motion.div
+						key={j}
+						initial={{ scale: 0, rotation: -180 }}
+						animate={{
+							rotate: 0,
+							left: `${(j - po) * 65 + 4.5}vw`,
+							scale: j === po ? 1 : 0.8,
+							opacity: j === po ? 1 : 0,
+						}}
+						transition={{
+							type: "spring",
+							stiffness: 260,
+							damping: 20,
+						}}
+						className="c pa l-0 t-0 w-90 h-100 overflow-hidden p-10"
+					>
+						<p className="font-bold leading-tight text-2xl text-center mb-30">
+							{i.name}
+						</p>
+						<div className="w-full h-full flex p-10">
+							<div className="flex-1 ">
 								<img
-									className="w-full h-full object-cover bdrr-5"
+									className="w-100 hpx-350 bdrr-10 object-cover"
 									src={urlFor(i.imageurl)}
 									alt={i.name}
 								/>
 							</div>
-						))}
-					</div>
-				</div>
+							<p className="ml-10 flex-1 p fs-20">{i.desc}</p>
+						</div>
+					</motion.div>
+				))}
 			</div>
-			<motion.div
-				className="z back wr-flex"
-				onClick={nextBtn}
-				disabled={nextDisable ? true : false}
-				whileTap={nextDisable ? {} : { scale: 0.9 }}
-				style={nextDisable ? { color: "rgba(255, 255, 255, 0.5)" } : {}}
+			<motion.button
+				disabled={po === p.length - 1 ? true : false}
+				whileTap={po === p.length - 1 ? {} : { scale: 0.9 }}
+				style={
+					po === p.length - 1
+						? { color: "rgba(255, 255, 255, 0.5)" }
+						: { cursor: "pointer" }
+				}
+				className="z for wr-flex fs-30 mr-8"
+				onClick={onr}
 			>
-				{toShow && <IoChevronForward />}
-			</motion.div>
+				{p && <IoChevronForward />}
+			</motion.button>
+			<div className="pa b-0 l-0 r-0 mx-auto wr-flex">
+				{p.map((i, k) => (
+					<div
+						onClick={() => setPo(k)}
+						key={k}
+						className={`${
+							po === k ? "bg-white" : "bg-zinc-500"
+						} cp hpx-10 wpx-10 bdr-50 m-10`}
+					/>
+				))}
+			</div>
 		</div>
 	);
 };

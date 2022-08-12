@@ -8,7 +8,6 @@ const Link = ({ refArray, setCls, cls }) => {
 
 	function logit() {
 		const scrollY = window.pageYOffset;
-		console.log(scrollY)
 		if (scrollY >= 100) setCls("home");
 		if (scrollY >= 600) setCls("about");
 		if (scrollY >= 1250) setCls("projects");
@@ -19,7 +18,6 @@ const Link = ({ refArray, setCls, cls }) => {
 	}
 	function logit_n() {
 		const scrollY = window.pageYOffset;
-		console.log(scrollY)
 		if (scrollY >= 50) setCls("home");
 		if (scrollY >= 950) setCls("about");
 		if (scrollY >= 1750) setCls("projects");

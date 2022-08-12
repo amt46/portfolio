@@ -1,0 +1,18 @@
+.sc {
+	display: flex;
+	align-items: center;
+
+	.s-1 {
+		max-width: 400px;
+		min-width: 400px;
+	}
+
+	@media screen and (max-width: 1024px) {
+		display: block;
+
+		.s-1 {
+			width: 100%;
+			white-space: nowrap;
+		}
+	}
+}

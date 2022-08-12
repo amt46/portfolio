@@ -24,7 +24,7 @@ const Forfun = (props) => {
 	}
 
 	return (
-		<div className="fun ">
+		<div className="fun">
 			<div className="forfun">
 				<div className="box app__flex">
 					<div className="flex popheader pr">

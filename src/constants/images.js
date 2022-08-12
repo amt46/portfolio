@@ -41,6 +41,7 @@ import msprogram from "../assets/msquareprogrammingteacher.jpg";
 import fb from '../assets/Facebook.png'
 import blog from '../assets/Responsive.jpg'
 import os from '../assets/os.png'
+import mysql from '../assets/mysql.svg'
 
 const images = {
 	email,
@@ -81,7 +82,8 @@ const images = {
 	msprogram,
 	fb,
 	blog,
-	os
+	os,
+	mysql
 };
 
 export default images;

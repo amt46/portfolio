@@ -38,14 +38,14 @@ const About = () => {
 				</a>
 				<div className="mt-10 wr-flex pr">
 					<div className="w-90">
-						<p className="h text-4xl fw-800 mt-30 mb-30">
+						<p className="h text-4xl fw-800 mt-30 mb-30 drop-shadow-lg">
 							Welcome to{" "}
 							<span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
 								{" "}
 								My Portfolio website{" "}
 							</span>
 						</p>
-						<p className="fs-20 fw-600 mb-20">
+						<p className="fs-20 fw-600 mb-20 drop-shadow-sm">
 							What do I do and What's in it for you?
 						</p>
 						<div className={`forcontent hpx-300 ${readMore ? "sy" : ""}`}>

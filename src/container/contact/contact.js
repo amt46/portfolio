@@ -39,7 +39,7 @@ const Contact = () => {
 	};
 
 	return (
-		<div className="wr-flex mh-100 w-100">
+		<div className="wr-flex w-100">
 			<div className="wr-flex w-95">
 				{!isFormSub ? (
 					<div className="flex flex-col flex-1">

@@ -33,7 +33,7 @@ const Social = ({ classNames }) => {
 						onMouseLeave={() => setTooltip(null)}
 						className={`${
 							classNames + "-social"
-						} "icon" cp m-5 bdr-50 p-10 fs-20 pr flex tr`}
+						} drop-shadow-lg cp m-5 bdr-50 p-10 fs-20 pr flex tr`}
 						key={i.label}
 					>
 						<Icon />

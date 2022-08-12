@@ -47,17 +47,42 @@
 	font-weight: 800;
 }
 
+.p {
+	font-family: 'Poppins', sans-serif;
+	font-size: 20px;
+	font-weight: 500;
+}
+
 .z {
 	z-index: 9;
 }
 
-@for $i from 1 through 100 {
+@for $i from 0 through 100 {
 	.b-#{$i} {
 		bottom: #{$i}px;
 	}
 }
+@for $i from 0 through 100 {
+	.t-#{$i} {
+		top: #{$i}px;
+	}
+}
 
-@for $i from 1 through 100 {
+
+@for $i from 0 through 100 {
+	.l-#{$i} {
+		left: #{$i}px;
+	}
+}
+
+
+@for $i from 0 through 100 {
+	.r-#{$i} {
+		right: #{$i}px;
+	}
+}
+
+@for $i from 0 through 100 {
 	.m-#{$i} {
 		margin: #{$i}px;
 	}

@@ -7,7 +7,7 @@ const Wrapper = (Component, classNames, idName, pageRef) => () => {
 	return (
 		<div
 			ref={pageRef}
-			className={`${classNames + "-background"} wrapper mh-100 body pr`}
+			className={`${classNames + "-background"} wrapper mh-100 body pr overflow-hidden`}
 			id={idName}
 		>
 			<Social classNames={classNames} />
