@@ -62,6 +62,14 @@
 		bottom: #{$i}px;
 	}
 }
+
+
+@for $i from 0 through 1 {
+	.o-#{$i} {
+		opacity: #{$i};
+	}
+}
+
 @for $i from 0 through 100 {
 	.t-#{$i} {
 		top: #{$i}px;

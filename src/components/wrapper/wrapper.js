@@ -4,6 +4,7 @@ import Social from "./social";
 import "./wrapper.scss";
 
 const Wrapper = (Component, classNames, idName, pageRef) => () => {
+
 	return (
 		<div
 			ref={pageRef}

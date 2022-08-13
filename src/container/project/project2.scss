@@ -1,0 +1,114 @@
+.pm {
+
+	.si {
+		box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+		
+		svg {
+			margin-left: auto;
+			cursor: pointer;
+			color: #284b63;
+			transition: all .2s ease-in-out;
+
+			&:hover{
+				color: #335c67;
+			}
+		}
+	}
+
+	.ab {
+		background: #14213D;
+		color: #fff;
+
+		span {
+			max-width: 0;
+			-webkit-transition: max-width 1s;
+			transition: max-width 1s;
+			display: inline-block;
+			vertical-align: top;
+			white-space: nowrap;
+			overflow: hidden;
+		}
+
+		svg {
+			margin: 10px;
+		}
+
+		&:hover {
+			padding-right: 10px;
+			span {
+				max-width: 7rem;
+			}
+		}
+	}
+
+	.bi {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		z-index: 0;
+		filter: blur(8px);
+		-webkit-filter: blur(8px);
+	}
+
+	.btn {
+		button {
+			background-color: #fff;
+			color: #14213d;
+			margin: 10px;
+			padding: 10px;
+
+			svg {
+				margin-right: 10px;
+			}
+		}
+	}
+
+	@media screen and (max-width: 1024px) {
+		.for {
+			margin-right: 0;
+		}
+	}
+
+	@media screen and (max-width: 640px) {
+		.desc {
+			display: none;
+		}
+
+		.c {
+			flex-wrap: wrap;
+		}
+
+		.for,
+		.back {
+			display: none;
+		}
+	}
+
+	@media screen and (min-height: 760px) {
+		.pc {
+			margin-top: 70px;
+		}
+	}
+}
+
+/* project2 */
+.p2 {
+	.hi {
+		opacity: 0;
+		background: rgba(0, 0, 0, 0.5);
+
+		.i {
+			background: rgba(0, 0, 0, 0.8);
+			cursor: pointer;
+			color: #fff;
+			opacity: 0.9;
+		}
+
+		&:hover {
+			opacity: 1;
+		}
+	}
+}

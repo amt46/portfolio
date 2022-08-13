@@ -8,13 +8,14 @@ const Link = ({ refArray, setCls, cls }) => {
 
 	function logit() {
 		const scrollY = window.pageYOffset;
+		const h = window.innerHeight
 		if (scrollY >= 100) setCls("home");
-		if (scrollY >= 600) setCls("about");
-		if (scrollY >= 1250) setCls("projects");
+		if (scrollY >= h) setCls("about");
+		if (scrollY >= h * 2 - 50) setCls("projects");
 		if (scrollY >= 1800) setCls("skills");
 		if (scrollY >= 2500) setCls("contact");
 		if (scrollY <= 99) setCls("nav");
-		if (scrollY <= 1200 && scrollY >= 680) setCls("about n-shadow");
+		if (scrollY <= h * 2 -60 && scrollY >= h + 70) setCls("about n-shadow");
 	}
 	function logit_n() {
 		const scrollY = window.pageYOffset;

@@ -15,4 +15,12 @@
 			white-space: nowrap;
 		}
 	}
+
+	@media screen and (max-width: 640px){
+		.s-1 {
+			white-space: normal;
+			max-width: auto;
+			min-width: auto;
+		}
+	}
 }
