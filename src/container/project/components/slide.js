@@ -41,7 +41,7 @@ const Slide = ({p,po,setPo, onr, onl}) => {
 						<div className="w-full c h-full flex">
 							<div className="flex-auto w-40">
 								<img
-									className="w-100 hpx-350 bdrr-10 object-cover"
+									className="pointer-events-none w-100 hpx-350 bdrr-10 object-cover"
 									src={urlFor(i.imageurl)}
 									alt={i.name}
 								/>

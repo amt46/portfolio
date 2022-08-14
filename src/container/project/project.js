@@ -45,12 +45,34 @@ const Project = () => {
 	return (
 		<div className="pm wr-flex w-100 h-90">
 			{g && <Project1 p={p} />}
-		<AnimatePresence>
-			<div onClick={() => setG(!g)} className="z pa t-70 r-30 cp">
-				{!g && <motion.div initial={{opacity:0}} animate={{opacity:1}} exit={{opacity: 0}}><HiOutlineViewGrid size={30} /></motion.div>}
-				{g && <motion.div initial={{opacity:0}} animate={{opacity:1}} exit={{opacity: 0}}> <VscSplitHorizontal size={30} /></motion.div>}
-			</div>
-		</AnimatePresence>
+			<AnimatePresence>
+				<div onClick={() => setG(!g)} className="z pa t-70 r-30 cp">
+					{!g && (
+						<motion.div
+							whileInView={{scale: [.7,1.1,1]}}
+							whileTap={{ scale: 0.9 }}
+							whileHover={{scale: 1.1}}
+							initial={{ opacity: 0.8 }}
+							animate={{ opacity: 1 }}
+							exit={{ opacity: 0.8 }}
+						>
+							<HiOutlineViewGrid size={30} />
+						</motion.div>
+					)}
+					{g && (
+						<motion.div
+							whileTap={{ opacity: 0.9 }}
+							whileHover={{scale:1.1}}
+							initial={{ opacity: 0 }}
+							animate={{ opacity: 1 }}
+							exit={{ opacity: 0 }}
+						>
+							{" "}
+							<VscSplitHorizontal size={30} />
+						</motion.div>
+					)}
+				</div>
+			</AnimatePresence>
 			{!g && (
 				<div className="bi">
 					{p?.map((i, k) => {

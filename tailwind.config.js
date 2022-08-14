@@ -4,14 +4,15 @@ module.exports = {
 	theme: {
 		extend: {},
 		screens: {
-			tablet: "640px",
-			// => @media (min-width: 640px) { ... }
+			
+      'lg': {'max': '1023px'},
+      // => @media (max-width: 1023px) { ... }
 
-			laptop: "1024px",
-			// => @media (min-width: 1024px) { ... }
+      'md': {'max': '767px'},
+      // => @media (max-width: 767px) { ... }
 
-			desktop: "1280px",
-			// => @media (min-width: 1280px) { ... }
+      'sm': {'max': '639px'},
+      // => @media (max-width: 639px) { ... }
 		},
 	},
 	plugins: [require("tailwind-scrollbar-hide")],

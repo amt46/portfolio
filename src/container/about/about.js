@@ -19,7 +19,7 @@ const About = () => {
 	const ltaRef = useRef(null);
 
 	useEffect(() => {
-		if(window.innerWidth >= 600) setBigWin(true);
+		if(window.innerWidth >= 640) setBigWin(true);
 	}, []);
 	const checkValue = (e) => {
 		e.preventDefault();

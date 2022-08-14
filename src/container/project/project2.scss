@@ -1,23 +1,6 @@
 .pm {
-
-	.si {
-		box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-
-		
-		svg {
-			margin-left: auto;
-			cursor: pointer;
-			color: #284b63;
-			transition: all .2s ease-in-out;
-
-			&:hover{
-				color: #335c67;
-			}
-		}
-	}
-
 	.ab {
-		background: #14213D;
+		background: #14213d;
 		color: #fff;
 
 		span {
@@ -96,6 +79,18 @@
 
 /* project2 */
 .p2 {
+	.ss::-webkit-scrollbar-thumb {
+		background-color: #284b63;
+		border: 4px solid transparent;
+		border-radius: 8px;
+		background-clip: padding-box;
+	}
+
+	.ss::-webkit-scrollbar {
+		width: 16px;
+	}
+
+
 	.hi {
 		opacity: 0;
 		background: rgba(0, 0, 0, 0.5);
@@ -109,6 +104,27 @@
 
 		&:hover {
 			opacity: 1;
+		}
+	}
+
+	.pb {
+		box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+		svg {
+			margin-left: auto;
+			cursor: pointer;
+			color: #284b63;
+			transition: all 0.2s ease-in-out;
+
+			&:hover {
+				color: #335c67;
+			}
+		}
+	}
+
+	@media screen and (max-width: 640px) {
+		.cc {
+			height: auto;
 		}
 	}
 }

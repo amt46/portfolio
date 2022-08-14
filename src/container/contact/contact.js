@@ -1,5 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Button from "@mui/material/Button";
+
+import { motion, AnimatePresence } from 'framer-motion'
+
+import { BsFillPhoneFill } from "react-icons/bs";
 
 import MoonLoader from "react-spinners/MoonLoader";
 import { client } from "../../client";
@@ -13,16 +17,23 @@ const Contact = () => {
 	});
 	const [isFormSub, setIsFormSub] = useState(false);
 	const [loading, setLoading] = useState(false);
+	const [ mes, setMessage ] = useState("Send")
 
 	const { name, email, message } = formData;
+	const tu = useRef(null);
 
 	const handleChange = (e) => {
+		if(e.target) setMessage("Send")
+
+		setMessage("Send")
 		const { name, value } = e.target;
 
 		setFormData({ ...formData, [name]: value });
 	};
 
 	const handleSubmit = () => {
+		const { name, email, message } = formData;
+		if (name === "" || email === "" || message === "") return setMessage("Please fill all fields :(");
 		setLoading(true);
 
 		const contact = {
@@ -35,17 +46,25 @@ const Contact = () => {
 		client.create(contact).then(() => {
 			setLoading(false);
 			setIsFormSub(true);
+			const timer = setTimeout(() => {
+			tu.current.remove();
+		}, 3000);
+
 		});
 	};
 
 	return (
-		<div className="wr-flex w-100">
-			<div className="wr-flex w-95">
+		<div className="wr-flex w-100 c-c">
+			<div className="wr-flex w-95 flex-wrap">
 				{!isFormSub ? (
-					<div className="flex flex-col flex-1">
-						<h1>Do you want to tell Something</h1>
-						<p>+959 750 151 241</p>
-						<p>amt.code.4621@gmail.com</p>
+					<div className="flex text-center flex-col flex-1">
+						<p className="h fs-30 mb-20">
+							Do you want to tell Something
+						</p>
+						<p className="mb-20 ph wr-flex">
+							<BsFillPhoneFill /> +959 750 151 241
+						</p>
+						<p className="mb-20">amt.code.4621@gmail.com</p>
 						<form className="form wr-flex">
 							<input
 								name="name"
@@ -65,13 +84,23 @@ const Contact = () => {
 								placeholder="Your Message"
 							/>
 							<Button onClick={handleSubmit}>
-								{loading ? "Sending" : "Send"}{" "}
+								{mes}
 								{loading && <MoonLoader size={20} />}
 							</Button>
 						</form>
 					</div>
 				) : (
-					<div className=""> Thank for Your Message </div>
+					<AnimatePresence>
+					<motion.div
+						ref={tu}
+						initial={{opacity: 0}}
+						animate={{opacity: 1}}
+						exit={{opacity: 0}}
+						className="h text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600"
+					>
+						Thank for Your Message{" "}
+					</motion.div>
+					</AnimatePresence>
 				)}
 				<div className="wr-flex flex-initial w-60 bg-pink-600">
 					<h2>Sign up as a reviewer of my website</h2>

@@ -1,8 +1,29 @@
 import React, { useEffect, useState } from "react";
 import { images } from "../../constants";
+import { motion } from "framer-motion";
 
 import { client, urlFor } from "../../client";
 import "./skills.scss";
+
+const container = {
+	hidden: { opacity: 1, scale: 0 },
+	visible: {
+		opacity: 1,
+		scale: 1,
+		transition: {
+			delayChildren: 0.3,
+			staggerChildren: 0.2,
+		},
+	},
+};
+
+const item = {
+	hidden: { opacity: 0 },
+	visible: {
+		opacity: 1,
+	},
+};
+
 const Skills = () => {
 	const [skills, setSkills] = useState([]);
 
@@ -21,13 +42,26 @@ const Skills = () => {
 	}, []);
 
 	return (
-		<div className="pl-30 w-100 flex flex-col">
+		<motion.div
+			variants={container}
+			initial="hidden"
+			animate="visible"
+			className="pl-30 w-100 flex flex-col"
+		>
 			{skills?.map((i, index) => (
-				<div className="w-99 sc m-5" key={index}>
-					<p className="font-medium leading-tight text-2xl mt-0 mb-2 s-1 ml-20 drop-shadow-sm">{i.title}</p>
-					<div className="i s-2 flex flex-wrap">
+				<motion.div variants={item} className="w-99 sc m-5" key={index}>
+					<p className="font-medium leading-tight text-2xl mt-0 mb-2 s-1 ml-20 drop-shadow-sm">
+						{i.title}
+					</p>
+					<motion.div
+						variants={container}
+						initial="hidden"
+						animate="visible"
+						className="i s-2 flex flex-wrap"
+					>
 						{i.skill.map((a, j) => (
-							<div
+							<motion.div
+								variants={item}
 								key={j}
 								className="wpx-90 m-5 wr-flex hpx-90 ml-50"
 							>
@@ -44,12 +78,12 @@ const Skills = () => {
 									src={urlFor(a.imageurl)}
 									alt={a.name}
 								/>
-							</div>
+							</motion.div>
 						))}
-					</div>
-				</div>
+					</motion.div>
+				</motion.div>
 			))}
-		</div>
+		</motion.div>
 	);
 };
 
