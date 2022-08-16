@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import Button from "@mui/material/Button";
 
 import { motion, AnimatePresence } from 'framer-motion'
@@ -19,8 +19,8 @@ const Contact = () => {
 	const [loading, setLoading] = useState(false);
 	const [ mes, setMessage ] = useState("Send")
 
-	const { name, email, message } = formData;
 	const tu = useRef(null);
+	const toh =useRef(null)
 
 	const handleChange = (e) => {
 		if(e.target) setMessage("Send")
@@ -46,7 +46,7 @@ const Contact = () => {
 		client.create(contact).then(() => {
 			setLoading(false);
 			setIsFormSub(true);
-			const timer = setTimeout(() => {
+			setTimeout(() => {
 			tu.current.remove();
 		}, 3000);
 
@@ -57,14 +57,14 @@ const Contact = () => {
 		<div className="wr-flex w-100 c-c">
 			<div className="wr-flex w-95 flex-wrap">
 				{!isFormSub ? (
-					<div className="flex text-center flex-col flex-1">
+					<div ref={toh} className="flex text-center flex-col flex-1">
 						<p className="h fs-30 mb-20">
 							Do you want to tell Something
 						</p>
 						<p className="mb-20 ph wr-flex">
 							<BsFillPhoneFill /> +959 750 151 241
 						</p>
-						<p className="mb-20">amt.code.4621@gmail.com</p>
+						<p className="mb-20 fs-20">amt.code.4621@gmail.com</p>
 						<form className="form wr-flex">
 							<input
 								name="name"
@@ -102,9 +102,6 @@ const Contact = () => {
 					</motion.div>
 					</AnimatePresence>
 				)}
-				<div className="wr-flex flex-initial w-60 bg-pink-600">
-					<h2>Sign up as a reviewer of my website</h2>
-				</div>
 			</div>
 		</div>
 	);

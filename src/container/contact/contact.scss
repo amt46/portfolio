@@ -1,18 +1,32 @@
 .c-c {
-.form {
-	flex-direction: column;
+	.form {
+		flex-direction: column;
+		margin:  auto;
 
-	input, textarea {
-		width: 300px;
-		padding: 10px 20px;
-		border: 2px solid #D7DEE8;
-		margin: 10px;
-		outline: none;
-		border-radius: 10px;
+		input,
+		textarea {
+			width: 300px;
+			padding: 10px 20px;
+			border: 2px solid #d7dee8;
+			margin: 10px;
+			outline: none;
+			border-radius: 10px;
+		}
+
+		button {
+			width: 300px;
+			background-color: #d7dee8;
+			border-radius: 10px;
+
+			margin-top: 10px;
+			padding: 10px;
+			text-transform: none;
+			color: #000;
+			box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+		}
 	}
-}
 
-.ph {
-	color: #DA2879;
-}
+	.ph {
+		color: #da2879;
+	}
 }

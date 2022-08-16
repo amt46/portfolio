@@ -1,5 +1,28 @@
 .app__header {
 
+	.njs {
+		top: 60px;
+	}
+
+	.r {
+		right: 20px;
+		top: 80px;
+	}
+
+	.s {
+		right: 50px;
+		bottom: 10px;
+	}
+
+	.js {
+		top: 60%;
+		right: 10%;
+	}
+
+	.rd {
+		bottom: 10px;
+	}
+
 	.bc {
 
 		.btn {
@@ -16,7 +39,7 @@
 			text-transform: none;
 			overflow: hidden;
 			border-radius: 5px;
-			font-family: "Krona One", sans-serif;
+			font-family: "Poppins", sans-serif;
 			transition: all 1.5s ease-in-out;
 
 			&:hover {
@@ -48,8 +71,8 @@
 	}
 
 	.mt {
-		top: 5px;
-		left: 5px;
+		top: 0px;
+		left: 0px;
 	}
 
 	@media screen and (max-width: 1024px) {
@@ -67,6 +90,8 @@
 		.img2 {
 			display: block;
 			margin: auto;
+			width: 90%;
+			height: 300px;
 		}
 
 		.sk {
@@ -78,6 +103,10 @@
 		}
 		.bc {
 			margin: 10px auto;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
 		}
 		.mt {
 			display: none;

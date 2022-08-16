@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 
 import Button from "@mui/material/Button";
 import Tilt from "react-parallax-tilt";
@@ -7,11 +7,30 @@ import { motion, AnimatePresence } from "framer-motion";
 import { images } from "../../constants/index";
 import "./header.scss";
 
-const Header = () => {
+export  function getWindowSize() {
+	const { innerWidth, innerHeight } = window;
+		return { innerWidth, innerHeight };
+}
+
+const Header = ({ homeRef }) => {
 	const [isImg, setIsImg] = useState(false);
+	const [windowSize, setWindowSize] = useState(getWindowSize());
 
 	const projectsRef = useRef(null);
 	const skillsRef = useRef(null);
+	const img2 = useRef(null)
+
+	useEffect(() => {
+		function handleWindowResize() {
+			setWindowSize(getWindowSize());
+		}
+
+		window.addEventListener("resize", handleWindowResize);
+
+		return () => {
+			window.removeEventListener("resize", handleWindowResize);
+		};
+	}, []);
 
 	const skills = [
 		{ name: "Node Js", image: images.node, class: "njs" },
@@ -30,7 +49,7 @@ const Header = () => {
 	};
 
 	return (
-		<div className="app__header flex w-100">
+		<div ref={homeRef} className="app__header flex w-100">
 			<Tilt className="img1 p-40 flex-auto w-32">
 				<div className="w-full h-[500px] mx-auto">
 					<img
@@ -54,7 +73,7 @@ const Header = () => {
 							Let Join your Development Team for My Experience
 						</p>
 					</div>
-					<div className="img2 w-[350px] h-[500px] hidden">
+					<div ref={img2} className="img2 w-[350px] h-[500px] hidden">
 						<img
 							className="w-full h-full object-cover bdrr-10"
 							src={images.amt}
@@ -63,6 +82,7 @@ const Header = () => {
 					</div>
 					<div className="bc">
 						<Button
+							style={windowSize.innerWidth <= 640 ? {width: `${img2.current?.offsetWidth}px`}: {}}
 							className="btn"
 							onMouseMove={hoverEffect}
 							onClick={() => projectsRef.current.click()}
@@ -70,6 +90,7 @@ const Header = () => {
 							My Projects
 						</Button>
 						<Button
+							style={windowSize.innerWidth <= 640 ? {width: `${img2.current?.offsetWidth}px`}: {}}
 							className="btn"
 							onMouseMove={hoverEffect}
 							onClick={() => skillsRef.current.click()}
@@ -95,8 +116,11 @@ const Header = () => {
 				<div className="flex">
 					{skills.map((i) => {
 						return (
-							<div key={i.name} className={`${i.class} sk wpx-70 pa`}>
-								<div className="">
+							<div
+								key={i.name}
+								className={`${i.class} sk wpx-70 pa`}
+							>
+								<div className="pr w-100 h-100">
 									<img
 										className={`${
 											i.name === "React" ? "App-logo" : ""
@@ -121,7 +145,7 @@ const Header = () => {
 												}
 											>
 												<img
-													className="mt"
+													className="mt w-full h-full bdrr-5 cp"
 													src={images.msprogram}
 													alt="msquareprogrammingteacher"
 												/>

@@ -32,10 +32,9 @@ const item = {
 
 const Project1 = ({ p }) => {
 	const [si, setSi] = useState(null);
-	console.log(window.pageYOffset);
 	return (
 		<div className="w-100 p2">
-			<p className="h fs-20 p-0 text-center">
+			<p className="h fs-20 pt-20 text-center">
 				Some projects are not real. This is my Dream :)
 			</p>
 			<motion.div
@@ -53,9 +52,9 @@ const Project1 = ({ p }) => {
 								: { opacity: 1 }
 						}
 						key={k}
-						className="gp tr min-w-[250px] m-10 p-10 bdrr-5 text-black bg-white"
+						className="gp tr m-10 p-10 bdrr-5 text-black bg-white"
 					>
-						<motion.div className="w-100 hpx-150 relative">
+						<motion.div className="g w-100 hpx-150 relative">
 							<motion.img
 								className="img w-full h-full object-cover bdrr-5 mb-10"
 								src={urlFor(i.imageurl)}

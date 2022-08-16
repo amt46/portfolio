@@ -12,14 +12,15 @@ import Slide from "./components/slide";
 
 import "./project2.scss";
 
-const Project = () => {
+const Project = ({ projectsRef }) => {
 	const [g, setG] = useState(false);
 	const [p, setP] = useState([]);
 	const [po, setPo] = useState(0);
 
-	const getData = () => {
+	const getData = async () => {
+		console.log("i am calling");
 		const query = '*[_type == "projects"]';
-		client
+		await client
 			.fetch(query)
 			.then((data) => {
 				setP(data);
@@ -28,6 +29,7 @@ const Project = () => {
 	};
 
 	useEffect(() => {
+		console.log("i call");
 		getData();
 	}, []);
 
@@ -42,37 +44,60 @@ const Project = () => {
 		}
 	};
 
+	function poopityScoop() {
+		window.ononline = (event) => {
+			console.log("Back Online");
+			console.log("i call from global");
+			getData();
+		};
+
+		window.onoffline = (event) => {
+			console.log("Connection Lost");
+		};
+	}
+	poopityScoop();
 	return (
-		<div className="pm wr-flex w-100 h-90">
+		<div ref={projectsRef} className="pm wr-flex w-100 h-90">
+			{p.length === 0 && (
+				<p className="loading">
+					<div class="loader">
+						<div class="inner one"></div>
+						<div class="inner two"></div>
+						<div class="inner three"></div>
+					</div>
+				</p>
+			)}
 			{g && <Project1 p={p} />}
-			<AnimatePresence>
-				<div onClick={() => setG(!g)} className="z pa t-70 r-30 cp">
-					{!g && (
-						<motion.div
-							whileInView={{scale: [.7,1.1,1]}}
-							whileTap={{ scale: 0.9 }}
-							whileHover={{scale: 1.1}}
-							initial={{ opacity: 0.8 }}
-							animate={{ opacity: 1 }}
-							exit={{ opacity: 0.8 }}
-						>
-							<HiOutlineViewGrid size={30} />
-						</motion.div>
-					)}
-					{g && (
-						<motion.div
-							whileTap={{ opacity: 0.9 }}
-							whileHover={{scale:1.1}}
-							initial={{ opacity: 0 }}
-							animate={{ opacity: 1 }}
-							exit={{ opacity: 0 }}
-						>
-							{" "}
-							<VscSplitHorizontal size={30} />
-						</motion.div>
-					)}
-				</div>
-			</AnimatePresence>
+			{p.length > 0 && (
+				<AnimatePresence>
+					<div onClick={() => setG(!g)} className="c-p z pa t-70 r-30 cp">
+						{!g ? (
+							<motion.div
+								whileInView={{ scale: [0.7, 1.1, 1] }}
+								whileTap={{ scale: 0.9 }}
+								whileHover={{ scale: 1.1 }}
+								initial={{ opacity: 0.8 }}
+								animate={{ opacity: 1 }}
+								exit={{ opacity: 0.8 }}
+								className="drop-shadow-xl"
+							>
+								<HiOutlineViewGrid size={30} />
+							</motion.div>
+						) : (
+							<motion.div
+								whileTap={{ opacity: 0.9 }}
+								whileHover={{ scale: 1.1 }}
+								initial={{ opacity: 0.8 }}
+								animate={{ opacity: 1 }}
+								exit={{ opacity: 0.8 }}
+								className="drop-shadow-xl"
+							>
+								<VscSplitHorizontal size={30} />
+							</motion.div>
+						)}
+					</div>
+				</AnimatePresence>
+			)}
 			{!g && (
 				<div className="bi">
 					{p?.map((i, k) => {
@@ -124,7 +149,7 @@ const Project = () => {
 				</motion.button>
 			)}
 			{!g && (
-				<div className="pa b-0 l-0 r-0 mx-auto wr-flex">
+				<div className="dot pa b-0 l-0 r-0 mx-auto wr-flex">
 					{p.map((i, k) => (
 						<div
 							onClick={() => setPo(k)}

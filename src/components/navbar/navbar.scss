@@ -31,6 +31,21 @@
 	}
 }
 
+.default {
+	background: rgba(255, 255, 255, 0.5);
+	backdrop-filter: blur(4px);
+	-webkit-backdrop-filter: blur(4px);
+
+	.button {
+		color: #fff;
+	}
+
+	.slider {
+		background-color: #fff;
+	}
+}
+
+
 .home {
 	background: rgba(255, 255, 255, 0.3);
 	backdrop-filter: blur(4px);
@@ -70,10 +85,21 @@
 	}
 }
 
-
-.projects {
+.projects-blur {
 	backdrop-filter: blur(4px);
 	-webkit-backdrop-filter: blur(4px);
+	.button {
+		color: #fff;
+	}
+
+	.slider {
+		background-color: #fff;
+	}
+
+
+}
+
+.projects {
 	.button {
 		color: #fff;
 	}

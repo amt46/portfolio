@@ -27,7 +27,7 @@ const item = {
 const Skills = () => {
 	const [skills, setSkills] = useState([]);
 
-	useEffect(() => {
+	const getData = () => {
 		const query = '*[_type == "skills"]';
 		client
 			.fetch(query)
@@ -39,6 +39,10 @@ const Skills = () => {
 				);
 			})
 			.catch((err) => console.log(err));
+	};
+	useEffect(() => {
+		getData();
+		if (navigator.onLine) getData();
 	}, []);
 
 	return (
@@ -46,8 +50,15 @@ const Skills = () => {
 			variants={container}
 			initial="hidden"
 			animate="visible"
-			className="pl-30 w-100 flex flex-col"
+			className="s-c w-100 flex flex-col"
 		>
+			{skills.length === 0 && (
+				<div class="loader">
+					<div style={{}} class="inner2 one2"></div>
+					<div class="inner2 two2"></div>
+					<div class="inner2 three2"></div>
+				</div>
+			)}
 			{skills?.map((i, index) => (
 				<motion.div variants={item} className="w-99 sc m-5" key={index}>
 					<p className="font-medium leading-tight text-2xl mt-0 mb-2 s-1 ml-20 drop-shadow-sm">

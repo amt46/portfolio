@@ -8,7 +8,7 @@ import Wrapper from "./components/wrapper/wrapper";
 import "./App.scss";
 
 function App() {
-	let homeRef = useRef(null);
+	const homeRef = useRef();
 	const aboutRef = useRef();
 	const projectsRef = useRef();
 	const contactRef = useRef();
@@ -20,6 +20,8 @@ function App() {
 	const ProjectWrap = Wrapper(Project, "projects", "projects", projectsRef);
 	const SkillsWrap = Wrapper(Skills, 'skills', 'skills', skillsRef);
 	const ContactWrap = Wrapper(Contact, "contact", "contact", contactRef);
+
+	console.log(refArray)
 
 	return (
 		<AnimatePresence>

@@ -10,7 +10,7 @@ import Button from "@mui/material/Button";
 const Slide = ({p,po,setPo, onr, onl}) => {
 	
 	return (
-			<motion.div className="pr pc w-100 h-100">
+			<motion.div className="pc w-100 h-80">
 				{p?.map((i, j) => (
 					<motion.div
 						drag="x"
@@ -33,20 +33,20 @@ const Slide = ({p,po,setPo, onr, onl}) => {
 							if (i.offset.x > 0) onl();
 							if (i.offset.x < 0) onr();
 						}}
-						className="c pa l-0 t-0 w-100 p-20"
+						className="c"
 					>
-						<p className="font-bold hd leading-tight text-2xl text-center mb-30">
+						<p className="h-text font-bold hd leading-tight text-2xl text-center mb-30">
 							{i.name}
 						</p>
-						<div className="w-full c h-full flex">
-							<div className="flex-auto w-40">
+						<div className="c-c">
+							<div className="img-c">
 								<img
-									className="pointer-events-none w-100 hpx-350 bdrr-10 object-cover"
+									className="pointer-events-none bdrr-10"
 									src={urlFor(i.imageurl)}
 									alt={i.name}
 								/>
 							</div>
-							<div className="ml-40 flex-auto flex justify-between flex-col w-60 p-20">
+							<div className="cc">
 								<p className="desc p fs-20">{i.desc}</p>
 								<div className="btn">
 									<Button>

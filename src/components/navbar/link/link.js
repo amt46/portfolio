@@ -1,56 +1,44 @@
-import React, { useEffect, useRef} from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Button from "@mui/material/Button";
 
 import nav from "./nav";
 
 const Link = ({ refArray, setCls, cls }) => {
+	const [height, setHeight] = useState({
+		home: 0,
+		about: 0,
+		projects: 0,
+		skills: 0,
+		contact: 0,
+	});
 	const sliderRef = useRef();
 
 	function logit() {
+		const a = refArray[0].current.offsetHeight;
+		const b = refArray[1].current.offsetHeight;
+		const c = refArray[2].current.offsetHeight;
+		const d = refArray[3].current.offsetHeight;
 		const scrollY = window.pageYOffset;
-		const h = window.innerHeight
+		const h = window.innerHeight;
 		if (scrollY >= 100) setCls("home");
-		if (scrollY >= h) setCls("about");
-		if (scrollY >= h * 2 - 50) setCls("projects");
-		if (scrollY >= 1800) setCls("skills");
-		if (scrollY >= 2500) setCls("contact");
+		if (scrollY >= a - 10) setCls("about");
+		if (scrollY >= a + b - 10) setCls("projects");
+		if (scrollY >= a + b + 60) setCls("projects-blur");
+		if (scrollY >= a + b + c - 10) setCls("skills");
+		if (scrollY >= a + b + c + d - 10) setCls("contact");
 		if (scrollY <= 99) setCls("nav");
-		if (scrollY <= h * 2 -60 && scrollY >= h + 70) setCls("about n-shadow");
 	}
-	function logit_n() {
-		const scrollY = window.pageYOffset;
-		if (scrollY >= 50) setCls("home");
-		if (scrollY >= 950) setCls("about");
-		if (scrollY >= 1750) setCls("projects");
-		if (scrollY >= 2300) setCls("skills");
-		if (scrollY >= 2500) setCls("contact");
-		if (scrollY <= 59) setCls("nav");
-		if (scrollY <= 1749 && scrollY >= 1200) setCls("about n-shadow");
-	}
-
 
 	useEffect(() => {
-		if (window.innerWidth >= 900) {
-			function watchScroll() {
-				window.addEventListener("scroll", logit);
-			}
-			watchScroll();
-			return () => {
-				window.removeEventListener("scroll", logit);
-			};
+		function watchScroll() {
+			window.addEventListener("scroll", logit);
 		}
-		if (window.innerWidth <= 989) {
-			function watchScroll() {
-				window.addEventListener("scroll", logit_n);
-			}
-			watchScroll();
-			return () => {
-				window.removeEventListener("scroll", logit_n);
-			};
-		}
+		watchScroll();
+		return () => {
+			window.removeEventListener("scroll", logit);
+		};
 	});
 
-	useEffect(() => {});
 
 	const toFindActive = (id) => {
 		const clickTag = document.getElementById(id);

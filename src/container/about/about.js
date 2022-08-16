@@ -4,6 +4,7 @@ import Button from "@mui/material/Button";
 import Forfun from "./forfun";
 import Family from "./family/family";
 import Askhow from "./askhow";
+import { getWindowSize } from "../header/header"
 
 import "./about.scss";
 
@@ -15,12 +16,27 @@ const About = () => {
 	const [family, setFamily] = useState("");
 	const [askhow, setAskhow] = useState(false);
 	const [inpValue, setInpValue] = useState("");
+	const [windowSize, setWindowSize] = useState(getWindowSize());
 
 	const ltaRef = useRef(null);
 
 	useEffect(() => {
-		if(window.innerWidth >= 640) setBigWin(true);
+		function handleWindowResize() {
+			setWindowSize(getWindowSize());
+		}
+
+		window.addEventListener("resize", handleWindowResize);
+
+		return () => {
+			window.removeEventListener("resize", handleWindowResize);
+		};
 	}, []);
+
+	useEffect(() => {
+		if(windowSize.innerWidth >=640 )setBigWin(true);
+		if(windowSize.innerWidth <=641 )setBigWin(false)
+	}, [windowSize]);
+
 	const checkValue = (e) => {
 		e.preventDefault();
 		const v = inpValue.toLowerCase().replace(/ /g, "");
@@ -48,7 +64,7 @@ const About = () => {
 						<p className="fs-20 fw-600 mb-20 drop-shadow-sm">
 							What do I do and What's in it for you?
 						</p>
-						<div className={`forcontent hpx-300 ${readMore ? "sy" : ""}`}>
+						<div className={`forcontent hpx-300 ${readMore ? "sy ss" : ""}`}>
 							<p className="p-t">
 								My goal is Mobile Developer. I want to use
 								Javascript for this and React Native. Because I
