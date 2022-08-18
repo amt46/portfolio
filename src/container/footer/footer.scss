@@ -1,0 +1,50 @@
+.window {
+	background: rgb(224, 231, 241);
+	background: linear-gradient(
+		127deg,
+		rgba(224, 231, 241, 1) 0%,
+		rgba(235, 239, 248, 1) 24%,
+		rgba(223, 230, 240, 1) 35%,
+		rgba(245, 249, 255, 1) 100%
+	);
+	color: rgba(0,0,0,.5);
+
+	.ani {
+		border-top-right-radius: 30px;
+		border-bottom-right-radius: 30px;
+	}
+
+	.t {
+		margin-bottom: 10px;
+	}
+	.op {
+		button {
+			color: #212529;
+			border-radius: 20px;
+			padding: 10px 20px;
+
+			&:hover {
+				background: #fff;
+				color: #212529;
+			}
+		}
+	}
+
+	.rr {
+		border: 3px solid;
+		-webkit-text-stroke: 1px red;
+		 text-shadow: 0 0 3px #FFf, 0 0 5px #0000FF;
+		 color: #fff;
+	}
+
+	.rrs {
+		height: auto;
+		padding: 10px;
+		white-space: nowrap;
+		color: #000;
+		margin: 5px;
+
+		display: flex;
+		flex-wrap: wrap;
+	}
+}

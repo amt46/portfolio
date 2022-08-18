@@ -1,12 +1,30 @@
-import React from 'react'
+import { useEffect, useState } from "react";
+
+import Window from "./window";
+import Mobile from "./mobile";
+import { getWindowSize } from "../header/header";
+import './footer.scss'
 
 const Footer = () => {
-	
-	return (
-		<div className="min-h-[200px]" >
-			Footer
-		</div>
-	)
-}
+	const [windowSize, setWindowSize] = useState(getWindowSize());
 
-export default Footer
+	useEffect(() => {
+		function handleWindowResize() {
+			setWindowSize(getWindowSize());
+		}
+
+		window.addEventListener("resize", handleWindowResize);
+
+		return () => {
+			window.removeEventListener("resize", handleWindowResize);
+		};
+	}, []);
+
+	if (windowSize.innerWidth >= 900) {
+		return <Window />;
+	} else if (windowSize.innerWidth <= 899) {
+		return <Mobile />;
+	}
+};
+
+export default Footer;

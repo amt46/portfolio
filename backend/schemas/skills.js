@@ -35,6 +35,11 @@ export default {
 							name: "desc",
 							title: "Desc",
 							type: "string"
+						},
+						{
+							name: "rate",
+							title: "Rate",
+							type: "number"
 						}
 					],
 				},

@@ -10,7 +10,7 @@ const Navbar = ({ refArray }) => {
 		<div
 			className={`${cls} app__navbar tr`}
 		>
-			<p>Aung Myo Thu</p>
+			<p className={`${cls}-logo logo tr`}> Aung Myo Thu</p>
 			<Link refArray={refArray} cls={cls} setCls={setCls} />
 		</div>
 	);

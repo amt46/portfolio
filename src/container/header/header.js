@@ -69,7 +69,7 @@ const Header = ({ homeRef }) => {
 								Web & Mobile Developer{" "}
 							</span>
 						</p>
-						<p className="fs-20 fw-500 mt-20 mb-20">
+						<p className="nt fw-500 mt-20 mb-20">
 							Let Join your Development Team for My Experience
 						</p>
 					</div>

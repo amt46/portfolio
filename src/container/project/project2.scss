@@ -8,6 +8,7 @@
 
 	.btn {
 		button {
+			width: 150px;
 			background-color: #fff;
 			color: #14213d;
 			padding: 10px;
@@ -21,7 +22,7 @@
 
 	.c {
 		position: absolute;
-		top: 10%;
+		top: 20%;
 		left: 0;
 		right: 0;
 		bottom: 0;
@@ -38,9 +39,9 @@
 			height: 80%;
 		}
 		.img-c {
-			width: 50%;
+			width: 450px;
 			padding: 10px;
-			height: 100%;
+			height: 400px;
 
 			img {
 				width: 100%;
@@ -51,7 +52,7 @@
 
 		.cc {
 			width: 50%;
-			height: 100%;
+			height: 400px;
 
 			display: flex;
 			flex-direction: column;
@@ -109,13 +110,26 @@
 		}
 	}
 
-	@media screen and (max-width: 640px) {
-		height: auto;
+	@media screen and (max-width: 400px){
+
+		.desc {
+			font-size: 1.2rem;
+			overflow-y: auto;
+		}
 
 		.c-p {
 			top: 20px;
 			right: 20px;
 		}
+	}
+
+	@media screen and (max-width: 640px) {
+		height: auto;
+
+		.c {
+			top: 10%;
+		}
+
 
 		.h-text {
 			margin-bottom: 0;
@@ -140,6 +154,7 @@
 
 			.btn {
 				display: flex;
+				flex-wrap: wrap;
 				justify-content: center;
 				margin: 10px auto;
 			}
@@ -161,6 +176,10 @@
 
 /* project2 */
 .p2 {
+	.btn2 {
+		display: flex;
+		width: 100%;
+	}
 	.hi {
 		opacity: 0;
 		background: rgba(0, 0, 0, 0.5);
@@ -180,14 +199,15 @@
 	.pb {
 		box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 
-		svg {
-			margin-left: auto;
-			cursor: pointer;
-			color: #284b63;
-			transition: all 0.2s ease-in-out;
+		.cl {
+			svg {
+				cursor: pointer;
+				color: #284b63;
+				transition: all 0.2s ease-in-out;
 
-			&:hover {
-				color: #335c67;
+				&:hover {
+					color: #335c67;
+				}
 			}
 		}
 	}
@@ -206,11 +226,34 @@
 		.cc {
 			height: auto;
 		}
+
+		.btn2 {
+			margin: 10px auto;
+			justify-content: center;
+			flex-wrap: wrap;
+
+			button {
+				min-width: auto;
+				width: auto;
+				margin: 5px auto;
+			}
+		}
 	}
 
 	@media screen and (max-width: 400px) {
 		.gp {
 			width: 90%;
 		}
+
+		.p2-img {
+			width: 100%;
+		}
+			
+		.btn2 {
+			button {
+				width: 100%;
+			}
+		}
+
 	}
 }

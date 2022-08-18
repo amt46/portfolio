@@ -61,7 +61,7 @@ const About = () => {
 								My Portfolio website{" "}
 							</span>
 						</p>
-						<p className="fs-20 fw-600 mb-20 drop-shadow-sm">
+						<p className="fs-2 fw-600 mb-20 drop-shadow-sm">
 							What do I do and What's in it for you?
 						</p>
 						<div className={`forcontent hpx-300 ${readMore ? "sy ss" : ""}`}>
@@ -77,7 +77,7 @@ const About = () => {
 									<span
 										onClick={() => setReadMore(!readMore)}
 									>
-										see more
+									{`${readMore ? "see less" : "see more"}...`}
 									</span>
 								)}
 							</p>
@@ -112,7 +112,7 @@ const About = () => {
 										>
 											{readMore
 												? "see less"
-												: "Read more"}
+												: "read more"}
 											...
 										</span>
 									)}
@@ -165,8 +165,8 @@ const About = () => {
 				</div>
 				{aboutMe === "I know you" && (
 					<div className="flex popup">
-						<p>do you want to enter my family page?</p>
-						<div className="btn-container">
+						<p className="mb-20 drop-shadow-sm fw-500">Do you want to enter my family page?</p>
+						<div className="b-c">
 							<Button
 								onClick={() => {
 									setAboutMe(false);
@@ -183,6 +183,7 @@ const About = () => {
 				)}
 				{askhow && (
 					<Askhow
+						setAboutMe={setAboutMe}
 						checkValue={checkValue}
 						setAskhow={setAskhow}
 						setInpValue={setInpValue}
@@ -193,6 +194,7 @@ const About = () => {
 				<div className="button w-100 wr-flex flex-wrap mt-40">
 					{["I know you", "About me", "My Skills"].map((i) => (
 						<Button
+							style={{borderRadius: "10px"}}
 							onClick={() => {
 								setAboutMe(i);
 								setAskhow(false);

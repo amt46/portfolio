@@ -1,23 +1,33 @@
 import React from "react";
 import { CgClose } from "react-icons/cg";
+import { IoCaretBackOutline } from "react-icons/io5";
 
 import Button from "@mui/material/Button";
 
-const Askhow = ({setAskhow, checkValue, setInpValue, inpValue}) => {
+const Askhow = ({setAskhow, setAboutMe, checkValue, setInpValue, inpValue}) => {
 	return (
-		<div className="askhow popup">
-			<div className="wr-flex popheader pr">
-				<p>Enter your name or some date</p>
+		<div className="popup pr">
+			<div className="popheader flex w-100 justify-between mb-10">
+				<div
+					onClick={() => {
+						setAskhow(false);
+						setAboutMe("I know you")
+					}}
+					className="close cp wr-flex tr"
+				>
+					<IoCaretBackOutline />
+				</div>
 				<div
 					onClick={() => {
 						setAskhow(false);
 					}}
-					className="close cp wr-flex"
+					className="close ml-auto cp wr-flex tr"
 				>
 					<CgClose />
 				</div>
 			</div>
-			<div className="wr-flex">
+			<p className="mb-20 drop-shadow-sm fw-500">Enter your name or some date</p>
+			<div className="form">
 				<form onSubmit={(e) => checkValue(e)}>
 					<input
 						onChange={(e) => {

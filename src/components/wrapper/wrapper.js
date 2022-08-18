@@ -16,8 +16,8 @@ const Wrapper = (Component, classNames, idName, pageRef) => () => {
 			<div className="app__wrapper app__flex">
 				<Component/>
 			</div>
-			<div className={`${classNames === "home" ? "hidden" : "copyright pa b-10 r-10"}`}>
-				<p className="p-text">@2020 AUNGMYOTHU</p>
+			<div className={`${classNames === "home" || classNames === "contact" ? "hidden" : "z copyright fs-1 pa b-10 r-10"}`}>
+				<p className="p-text">@2022 AUNGMYOTHU</p>
 				<p className="p-text">All rights reserved</p>
 			</div>
 		</div>

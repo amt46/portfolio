@@ -33,15 +33,12 @@ const item = {
 const Project1 = ({ p }) => {
 	const [si, setSi] = useState(null);
 	return (
-		<div className="w-100 p2">
-			<p className="h fs-20 pt-20 text-center">
-				Some projects are not real. This is my Dream :)
-			</p>
+		<div className="w-100 p2 mt-10">
 			<motion.div
 				variants={container}
 				initial="hidden"
 				animate="visible"
-				className="flex sm:justify-center sm:mt-5 flex-wrap min-h-[300px]"
+				className="flex sm:justify-center justify-center sm:mt-5 flex-wrap min-h-[300px]"
 			>
 				{p.map((i, k) => (
 					<motion.div
@@ -52,7 +49,7 @@ const Project1 = ({ p }) => {
 								: { opacity: 1 }
 						}
 						key={k}
-						className="gp tr m-10 p-10 bdrr-5 text-black bg-white"
+						className="gp tr m-10 p-10 bdrr-5 text-black bg-white hover:bg-zinc-100"
 					>
 						<motion.div className="g w-100 hpx-150 relative">
 							<motion.img
@@ -64,7 +61,7 @@ const Project1 = ({ p }) => {
 								<motion.div
 									whileTap={{ scale: 0.9 }}
 									onClick={() => console.log("click")}
-									className="fs-20 i wr-flex hpx-40  wpx-40 bdr-50 m-5 drop-shadow-lg shadow-white"
+									className="i wr-flex hpx-40  wpx-40 bdr-50 m-5 drop-shadow-lg shadow-white"
 								>
 									<BsGithub />
 								</motion.div>
@@ -76,14 +73,16 @@ const Project1 = ({ p }) => {
 								</motion.div>
 							</motion.div>
 						</motion.div>
-						<motion.p className="fw-500">
+						<motion.p className="fw-600">
 							{i.name.split(" ").slice(0, 2).join(" ")}
 						</motion.p>
-						<motion.p className="fs-14">
+						<motion.p className="">
 							{i.desc.substring(0, 30)}...
 						</motion.p>
 						<motion.button
-							className="tr ab flex items-center bdrr-10"
+							whileTap={{scale: .9}}
+							whileHover={{scale: 1.1}}
+							className="ab flex items-center bdrr-10"
 							onClick={(e) => {
 								if (si) return;
 								setSi(i);
@@ -102,15 +101,22 @@ const Project1 = ({ p }) => {
 						animate={{ opacity: 1 }}
 						className="z text-black pb bdrr-10 p-10 w-80 h-70 overflow-hidden sm:overflow-y-auto ss bg-white fixed top-[20%] left-0 right-0 mx-auto"
 					>
+						<motion.div className="cl wpx-30 hpx-30 ml-[auto]"
+							initial={{opacity:0}}
+							animate={{opacity:1}}
+							exit={{opacity: 0}}
+							whileTap={{scale: .9}}
+						>
 						<AiFillCloseCircle
 							onClick={() => setSi(null)}
 							size={30}
 						/>
-						<p className="fw-600 p text-center p-0 m-0">
+						</motion.div>
+						<p className="fw-600 p nt text-gray-700 text-center p-0 m-0">
 							{si.name}
 						</p>
 						<div className="w-100 flex flex-wrap">
-							<div className="w-50 max-h-[300px] mt-20 mx-auto">
+							<div className="w-50 p2-img max-h-[300px] mt-20 mx-auto">
 								<img
 									className="drop-shadow-sm w-100 h-100 object-cover bdrr-5"
 									src={urlFor(si.imageurl)}
@@ -118,13 +124,13 @@ const Project1 = ({ p }) => {
 								/>
 							</div>
 							<div className="wpx-500 p-20 h-100">
-								<div className="cc hpx-250 overflow-y-auto ss">
+								<div className="cc text-gray-600 drop-shadow-sm hpx-250 overflow-y-auto ss">
 									<p>{si.desc}</p>
 									<p>{si.desc}</p>
 									<p>{si.desc}</p>
 									<p>{si.desc}</p>
 								</div>
-								<div className="mt-10 btn min-w-[200px]">
+								<div className="mt-10 btn btn2 min-w-[200px]">
 									<Button className="drop-shadow-lg">
 										<BsGithub size={20} />
 										Github

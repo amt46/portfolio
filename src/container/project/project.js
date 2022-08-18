@@ -60,36 +60,29 @@ const Project = ({ projectsRef }) => {
 		<div ref={projectsRef} className="pm wr-flex w-100 h-90">
 			{p.length === 0 && (
 				<p className="loading">
-					<div class="loader">
-						<div class="inner one"></div>
-						<div class="inner two"></div>
-						<div class="inner three"></div>
+					<div className="loader">
+						<div className="inner one"></div>
+						<div className="inner two"></div>
+						<div className="inner three"></div>
 					</div>
 				</p>
 			)}
 			{g && <Project1 p={p} />}
 			{p.length > 0 && (
 				<AnimatePresence>
-					<div onClick={() => setG(!g)} className="c-p z pa t-70 r-30 cp">
+					<div onClick={() => setG(!g)} className="c-p z pa t-70 r-20 cp">
 						{!g ? (
 							<motion.div
 								whileInView={{ scale: [0.7, 1.1, 1] }}
 								whileTap={{ scale: 0.9 }}
-								whileHover={{ scale: 1.1 }}
-								initial={{ opacity: 0.8 }}
-								animate={{ opacity: 1 }}
-								exit={{ opacity: 0.8 }}
 								className="drop-shadow-xl"
 							>
 								<HiOutlineViewGrid size={30} />
 							</motion.div>
 						) : (
 							<motion.div
+								whileInView={{ scale: [0.7, 1.1, 1] }}
 								whileTap={{ opacity: 0.9 }}
-								whileHover={{ scale: 1.1 }}
-								initial={{ opacity: 0.8 }}
-								animate={{ opacity: 1 }}
-								exit={{ opacity: 0.8 }}
 								className="drop-shadow-xl"
 							>
 								<VscSplitHorizontal size={30} />
@@ -126,7 +119,7 @@ const Project = ({ projectsRef }) => {
 							? { color: "rgba(255, 255, 255, 0.5)" }
 							: { cursor: "pointer" }
 					}
-					className="z for wr-flex fs-30"
+					className="z for wr-flex fs-2"
 					onClick={onl}
 				>
 					{p.length !== 0 && <IoChevronBack />}
@@ -142,7 +135,7 @@ const Project = ({ projectsRef }) => {
 							? { color: "rgba(255, 255, 255, 0.5)" }
 							: { cursor: "pointer" }
 					}
-					className="z for wr-flex fs-30 mr-5"
+					className="z for wr-flex fs-2 mr-5"
 					onClick={onr}
 				>
 					{p.length !== 0 && <IoChevronForward />}

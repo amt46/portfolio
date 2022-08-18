@@ -2,9 +2,45 @@
 	display: flex;
 	align-items: center;
 
+	.f-b {
+		filter: drop-shadow(5px 5px 24px rgba(0,0,0,.2));
+		white-space: nowrap;
+		background-color: #fff;
+		width: auto;
+		border-radius: 5px;
+	}
+
+	.sk-c {
+		&:hover {
+			.sk-i {
+				filter: drop-shadow(5px 5px 24px #fff);
+			}
+		}
+	}
+
 	.s-1 {
 		max-width: 400px;
 		min-width: 400px;
+	}
+
+	.skill-bar {
+		left: 50%;
+		width: 200px;
+		position: absolute;
+		margin: 10px;
+		z-index: 3;
+
+		svg {
+			filter: drop-shadow(0px 1px 3px #a0a0a0);
+		}
+
+		.s-b {
+			width: 100%;
+			height: 13px;
+			background-color: #fff;
+			border: 2px solid #fff;
+			border-radius: 10px;
+		}
 	}
 
 	@media screen and (max-width: 1024px) {
@@ -16,7 +52,11 @@
 		}
 	}
 
-	@media screen and (max-width: 640px){
+	@media screen and (max-width: 640px) {
+		.sk-c {
+			cursor: pointer;
+		}
+
 		.s-1 {
 			white-space: normal;
 			max-width: auto;

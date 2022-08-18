@@ -58,13 +58,13 @@ const Contact = () => {
 			<div className="wr-flex w-95 flex-wrap">
 				{!isFormSub ? (
 					<div ref={toh} className="flex text-center flex-col flex-1">
-						<p className="h fs-30 mb-20">
+						<p className="h fs-2  mb-20 t drop-shadow-sm">
 							Do you want to tell Something
 						</p>
-						<p className="mb-20 ph wr-flex">
+						<p className="mb-20 nt ph wr-flex">
 							<BsFillPhoneFill /> +959 750 151 241
 						</p>
-						<p className="mb-20 fs-20">amt.code.4621@gmail.com</p>
+						<p className="mb-20 nt">amt.code.4621@gmail.com</p>
 						<form className="form wr-flex">
 							<input
 								name="name"

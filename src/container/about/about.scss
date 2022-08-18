@@ -42,45 +42,69 @@
 
 	.popup {
 		position: absolute;
-		top: 30%;
-		left: 40%;
-
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		margin: auto;
 		background-color: #fff;
+		width: 300px;
+		height: 170px;
 		box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+		border: 2px solid #2190ff;
 
-		padding: 20px;
+		padding: 10px;
 		border-radius: 10px;
 
-		flex-direction: column;
+		text-align: center;
 
-		input {
-			outline: none;
-			border: 1px solid rgba(0, 0, 0, 0.2);
-			border-radius: 3px;
-			width: 200px;
-			height: 38px;
-			padding: 0 10px;
-			margin-right: 10px;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+
+		.b-c {
+			button {
+				text-transform: none;
+				letter-spacing: 0.1rem;
+				border: 2px solid #2190ff;
+				margin: 5px;
+			}
+
+			button:nth-child(1) {
+				background-color: #2190ff;
+				color: #fff;
+			}
+		}
+		.form {
+			display: flex;
+			flex-direction: column;
+
+			input {
+				outline: none;
+				border: 2px solid #2190ff;
+				border-radius: 5px;
+				width: 150px;
+				height: 38px;
+				padding: 0 10px;
+				margin-right: 10px;
+			}
+
+			button {
+				border: 2px solid #2190ff;
+				height: 38px;
+				color: #2190ff;
+
+				&:hover {
+					background: #2190ff;
+					color: #fff;
+				}
+			}
 		}
 
 		.btn {
 			border: 1px solid rgba(0, 0, 0, 0.1);
 			margin: 10px;
-			background-color: #ffafcc;
 			color: #000;
-		}
-	}
-
-	.popheader {
-		width: 100%;
-		margin-bottom: 20px;
-		justify-content: flex-start;
-
-		p {
-			padding: 0;
-			margin: 0;
-			margin-top: 10px;
-			font-weight: 600;
 		}
 	}
 
@@ -88,9 +112,6 @@
 		width: 30px;
 		height: 30px;
 		border-radius: 50%;
-
-		position: absolute;
-		right: 0;
 
 		background-color: rgba(0, 0, 0, 0.1);
 
@@ -189,8 +210,6 @@
 
 	@media screen and (max-width: 400px) {
 		.button {
-
-
 			button {
 				width: 90%;
 			}

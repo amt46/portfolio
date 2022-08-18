@@ -10,7 +10,7 @@ import Button from "@mui/material/Button";
 const Slide = ({p,po,setPo, onr, onl}) => {
 	
 	return (
-			<motion.div className="pc w-100 h-80">
+			<motion.div className="pc w-100 h-70">
 				{p?.map((i, j) => (
 					<motion.div
 						drag="x"
@@ -29,7 +29,6 @@ const Slide = ({p,po,setPo, onr, onl}) => {
 							damping: 20,
 						}}
 						onDragEnd={(e, i) => {
-							console.log(i.offset);
 							if (i.offset.x > 0) onl();
 							if (i.offset.x < 0) onr();
 						}}
@@ -47,7 +46,7 @@ const Slide = ({p,po,setPo, onr, onl}) => {
 								/>
 							</div>
 							<div className="cc">
-								<p className="desc p fs-20">{i.desc}</p>
+								<p className="ss desc p nt">{i.desc}</p>
 								<div className="btn">
 									<Button>
 										<BsGithub size={20} />

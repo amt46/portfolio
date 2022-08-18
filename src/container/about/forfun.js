@@ -54,7 +54,7 @@ const Forfun = (props) => {
 					<div className="app__flex cp">
 						{forFun.map((i) => (
 							<div
-								style={showImg === forFun.indexOf(i) ? {backgroundColor: "pink"} : {}}
+								style={showImg === forFun.indexOf(i) ? {backgroundColor: "#2190ff"} : {}}
 								onClick={() => {
 									setShowImg(forFun.indexOf(i))
 									imgRef.current.src = i

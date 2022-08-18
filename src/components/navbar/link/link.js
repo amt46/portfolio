@@ -4,13 +4,7 @@ import Button from "@mui/material/Button";
 import nav from "./nav";
 
 const Link = ({ refArray, setCls, cls }) => {
-	const [height, setHeight] = useState({
-		home: 0,
-		about: 0,
-		projects: 0,
-		skills: 0,
-		contact: 0,
-	});
+
 	const sliderRef = useRef();
 
 	function logit() {
@@ -32,7 +26,7 @@ const Link = ({ refArray, setCls, cls }) => {
 	useEffect(() => {
 		function watchScroll() {
 			window.addEventListener("scroll", logit);
-		}
+	}
 		watchScroll();
 		return () => {
 			window.removeEventListener("scroll", logit);
