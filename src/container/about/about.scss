@@ -161,7 +161,7 @@
 		}
 
 		img {
-			width: 290px;
+			width: 350px;
 			height: 280px;
 			object-fit: cover;
 			border-radius: 10px;
@@ -184,13 +184,9 @@
 	}
 
 	.icon-img {
-		font-size: 25px;
-		color: rgba(0, 0, 0, 0.4);
+		font-size: 1.5rem;
 		user-select: none;
 
-		&:hover {
-			color: rgba(0, 0, 0, 0.5);
-		}
 	}
 
 	.btn-container {
@@ -209,6 +205,13 @@
 	}
 
 	@media screen and (max-width: 400px) {
+
+		.forfun {
+			img {
+				width: 280px;
+			}
+		}
+
 		.button {
 			button {
 				width: 90%;

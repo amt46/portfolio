@@ -49,7 +49,7 @@ const Header = ({ homeRef }) => {
 	};
 
 	return (
-		<div ref={homeRef} className="app__header flex w-100">
+		<div ref={homeRef} className="app__header flex w-100 pr">
 			<Tilt className="img1 p-40 flex-auto w-32">
 				<div className="w-full h-[500px] mx-auto">
 					<img
@@ -145,8 +145,8 @@ const Header = ({ homeRef }) => {
 												}
 											>
 												<img
-													className="mt w-full h-full bdrr-5 cp"
-													src={images.msprogram}
+													className="mt pa w-80 h-80 bdrr-5 cp"
+													src={images.ms}
 													alt="msquareprogrammingteacher"
 												/>
 											</motion.div>

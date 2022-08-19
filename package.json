@@ -16,6 +16,7 @@
 		"framer-motion": "^6.5.1",
 		"jwt-decode": "^3.1.2",
 		"react": "^18.2.0",
+		"react-click-outside-hook": "^1.1.1",
 		"react-dom": "^18.2.0",
 		"react-google-login": "^5.2.2",
 		"react-icons": "^4.4.0",
@@ -31,7 +32,7 @@
 	"scripts": {
 		"start": "react-scripts start",
 		"predeploy": "npm run build",
-		"deploy": "gh-pages -d build",
+		"deploy": "main -d build",
 		"build": "react-scripts build",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject"

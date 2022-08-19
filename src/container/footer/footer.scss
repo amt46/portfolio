@@ -7,7 +7,6 @@
 		rgba(223, 230, 240, 1) 35%,
 		rgba(245, 249, 255, 1) 100%
 	);
-	color: rgba(0,0,0,.5);
 
 	.ani {
 		border-top-right-radius: 30px;
@@ -17,24 +16,11 @@
 	.t {
 		margin-bottom: 10px;
 	}
-	.op {
-		button {
-			color: #212529;
-			border-radius: 20px;
-			padding: 10px 20px;
-
-			&:hover {
-				background: #fff;
-				color: #212529;
-			}
-		}
-	}
-
 	.rr {
 		border: 3px solid;
 		-webkit-text-stroke: 1px red;
-		 text-shadow: 0 0 3px #FFf, 0 0 5px #0000FF;
-		 color: #fff;
+		text-shadow: 0 0 3px #fff, 0 0 5px #0000ff;
+		color: #fff;
 	}
 
 	.rrs {
@@ -47,4 +33,33 @@
 		display: flex;
 		flex-wrap: wrap;
 	}
+
+	.cb {
+		button {
+			border-top-right-radius: 30px;
+			border-bottom-right-radius: 30px;
+		}
+		input {
+			outline: none;
+			border-top-left-radius: 30px;
+			border-bottom-left-radius: 30px;
+		}
+	}
+
+	@media screen and (max-width: 640px){
+		.fm {
+			flex-direction: column;
+			margin: auto;
+			width: 80%;
+		}
+	}
 }
+	.tc {
+		width: 30px;
+		height: 30px;
+		object-fit: cover;
+		border-radius: 4px;
+		margin-right: 10px;
+	}
+
+

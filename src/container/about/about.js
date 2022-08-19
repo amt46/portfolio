@@ -191,7 +191,7 @@ const About = () => {
 					/>
 				)}
 				{forimg && <Forfun setForimg={setForimg} />}
-				<div className="button w-100 wr-flex flex-wrap mt-40">
+				<div className="button w-100 wr-flex flex-wrap sm:mt-[10px]">
 					{["I know you", "About me", "My Skills"].map((i) => (
 						<Button
 							style={{borderRadius: "10px"}}

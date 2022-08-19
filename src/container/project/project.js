@@ -16,6 +16,11 @@ const Project = ({ projectsRef }) => {
 	const [g, setG] = useState(false);
 	const [p, setP] = useState([]);
 	const [po, setPo] = useState(0);
+	const [ online, setOnline ] = useState(false)
+
+	useEffect(() => {
+		if(online) getData()
+	},[online])
 
 	const getData = async () => {
 		console.log("i am calling");
@@ -47,12 +52,12 @@ const Project = ({ projectsRef }) => {
 	function poopityScoop() {
 		window.ononline = (event) => {
 			console.log("Back Online");
-			console.log("i call from global");
-			getData();
+			setOnline(true)
 		};
 
 		window.onoffline = (event) => {
 			console.log("Connection Lost");
+			setOnline(false)
 		};
 	}
 	poopityScoop();
@@ -70,7 +75,10 @@ const Project = ({ projectsRef }) => {
 			{g && <Project1 p={p} />}
 			{p.length > 0 && (
 				<AnimatePresence>
-					<div onClick={() => setG(!g)} className="c-p z pa t-70 r-20 cp">
+					<div
+						onClick={() => setG(!g)}
+						className="c-p z pa t-70 r-20 cp"
+					>
 						{!g ? (
 							<motion.div
 								whileInView={{ scale: [0.7, 1.1, 1] }}
@@ -93,9 +101,9 @@ const Project = ({ projectsRef }) => {
 			)}
 			{!g && (
 				<div className="bi">
-					{p?.map((i, k) => {
-						if (k === po)
-							return (
+					{p?.map(
+						(i, k) =>
+							po === k && (
 								<motion.img
 									initial={{ opacity: 0 }}
 									animate={{
@@ -106,8 +114,8 @@ const Project = ({ projectsRef }) => {
 									src={urlFor(i.imageurl)}
 									alt={i.name}
 								/>
-							);
-					})}
+							)
+					)}
 				</div>
 			)}
 			{!g && (

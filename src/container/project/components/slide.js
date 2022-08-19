@@ -10,7 +10,7 @@ import Button from "@mui/material/Button";
 const Slide = ({p,po,setPo, onr, onl}) => {
 	
 	return (
-			<motion.div className="pc w-100 h-70">
+			<motion.div className="pc w-100 h-100 pr">
 				{p?.map((i, j) => (
 					<motion.div
 						drag="x"
@@ -34,7 +34,7 @@ const Slide = ({p,po,setPo, onr, onl}) => {
 						}}
 						className="c"
 					>
-						<p className="h-text font-bold hd leading-tight text-2xl text-center mb-30">
+						<p className="h-text font-bold hd leading-tight text-2xl text-center">
 							{i.name}
 						</p>
 						<div className="c-c">
@@ -46,7 +46,7 @@ const Slide = ({p,po,setPo, onr, onl}) => {
 								/>
 							</div>
 							<div className="cc">
-								<p className="ss desc p nt">{i.desc}</p>
+								<p className="ss desc text-xl">{i.desc}</p>
 								<div className="btn">
 									<Button>
 										<BsGithub size={20} />

@@ -4,8 +4,10 @@ import Social from "./social";
 import "./wrapper.scss";
 
 const Wrapper = (Component, classNames, idName, pageRef) => () => {
+	const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
 	return (
 		<div
+			style={vh >= 1500 ? {height: "1024px"} : {}}
 			ref={pageRef}
 			className={`${
 				classNames + "-background"

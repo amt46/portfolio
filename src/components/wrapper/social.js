@@ -4,14 +4,15 @@ import { FaFacebookF, FaTwitter } from "react-icons/fa";
 import { IoLogoInstagram } from "react-icons/io";
 import { FiYoutube } from "react-icons/fi";
 
-export const handleClick = (e, i) => {
+const handleClick = (e, i) => {
+	if(i.name === "Facebook"){
 	window.open(`${i.link}`);
+	} else {
+		return
+	}
 };
 
-const Social = ({ classNames }) => {
-	const [tooltip, setTooltip] = useState(null);
-
-	const icons = [
+export const icons = [
 		{
 			icon: FaFacebookF,
 			label: "Facebook",
@@ -21,6 +22,10 @@ const Social = ({ classNames }) => {
 		{ icon: IoLogoInstagram, label: "Instagram", link: "" },
 		{ icon: FiYoutube, label: "YouTube", link: "" },
 	];
+
+
+const Social = ({ classNames }) => {
+	const [tooltip, setTooltip] = useState(null);
 
 	return (
 		<div className="app__social">

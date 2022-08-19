@@ -2,6 +2,8 @@ import React, { useEffect, useState, useRef } from "react";
 import { images } from "../../constants";
 import { motion, AnimatePresence } from "framer-motion";
 
+import { useClickOutside } from "react-click-outside-hook";
+
 import { getWindowSize } from "../header/header";
 import { client, urlFor } from "../../client";
 import "./skills.scss";
@@ -31,7 +33,15 @@ const Skills = () => {
 	const [ss, setSs] = useState(null);
 	const [ih, setIh] = useState("");
 	const [rate, setRate] = useState(0);
+	const [ref, hasClickedOutside] = useClickOutside();
 	const sb = useRef();
+
+	useEffect(() => {
+		if (hasClickedOutside) {
+			setSs(null);
+			setRate(0);
+		}
+	}, [hasClickedOutside]);
 
 	const getData = () => {
 		const query = '*[_type == "skills"]';
@@ -67,7 +77,7 @@ const Skills = () => {
 	let counter = 0;
 
 	const getRate = (e, a) => {
-		setRate(0)
+		setRate(0);
 		const position = e.target.getBoundingClientRect();
 		if (("element", position.left + 200 >= window.innerWidth)) {
 			const ele = document.getElementById("skill_bar");
@@ -118,11 +128,11 @@ const Skills = () => {
 					</p>
 					<AnimatePresence>
 						{windowSize.innerWidth <= 640 && i.skill.includes(ih) && (
-								<motion.div
-									initial={{ opacity: 0, height: 10 }}
-									animate={{ opacity: 1, height: 70 }}
-									className="w-80  mx-auto bg-blue-500 mt-10 bdrr-10 p-10 "
-								>
+							<motion.div
+								initial={{ opacity: 0, height: 10 }}
+								animate={{ opacity: 1, height: 70 }}
+								className="w-80  mx-auto bg-blue-500 mt-10 bdrr-10 p-10 "
+							>
 								<div className="items-center flex w-100">
 									<label className="text-white fw-600 mr-2 w-30 whitespace-nowrap">
 										Skill Rate
@@ -135,12 +145,24 @@ const Skills = () => {
 									></motion.div>
 								</div>
 								<motion.div className="flex w-[auto] mx-auto fw-600 fs-1 text-white text-center mt-5">
-							{!ih && <motion.p className="">Click on what you want to know</motion.p>}
-									<motion.p initial={{opacity:0}} animate={{opacity:1}}>{ih.name?.split(' ')[0].toUpperCase()}</motion.p>
-									<motion.p  initial={{opacity:0}} animate={{opacity:1}} className="ml-[auto]">{`${ih.rate}%`}</motion.p>
+									{!ih && (
+										<motion.p className="">
+											Click on what you want to know
+										</motion.p>
+									)}
+									<motion.p
+										initial={{ opacity: 0 }}
+										animate={{ opacity: 1 }}
+									>
+										{ih.name?.split(" ")[0].toUpperCase()}
+									</motion.p>
+									<motion.p
+										initial={{ opacity: 0 }}
+										animate={{ opacity: 1 }}
+										className="ml-[auto]"
+									>{`${ih.rate}%`}</motion.p>
 								</motion.div>
-								</motion.div>
-
+							</motion.div>
 						)}
 					</AnimatePresence>
 					<motion.div
@@ -153,7 +175,7 @@ const Skills = () => {
 							<motion.div
 								variants={item}
 								key={a.name}
-								whileTap={{scale: .9}}
+								whileTap={{ scale: 0.9 }}
 								className="pr sk-c wpx-90 m-5 wr-flex hpx-90 ml-50"
 								onMouseEnter={(e) => {
 									setIh(a);
@@ -185,7 +207,11 @@ const Skills = () => {
 									alt={a.name}
 								/>
 								{ss?.name === a.name && (
-									<div id="skill_bar" className="skill-bar">
+									<div
+										ref={ref}
+										id="skill_bar"
+										className="skill-bar"
+									>
 										<div className="pr">
 											<motion.div
 												style={
@@ -243,7 +269,10 @@ const Skills = () => {
 											</div>
 										</div>
 										<p className="f-b text-blue-400 nt fw-600 drop-shadow-xl text-center">
-											{a.name.split(' ').slice(0, 3).join(' ')}
+											{a.name
+												.split(" ")
+												.slice(0, 3)
+												.join(" ")}
 										</p>
 									</div>
 								)}

@@ -46,10 +46,6 @@ const Contact = () => {
 		client.create(contact).then(() => {
 			setLoading(false);
 			setIsFormSub(true);
-			setTimeout(() => {
-			tu.current.remove();
-		}, 3000);
-
 		});
 	};
 
