@@ -1,13 +1,10 @@
-import React, { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import Button from "@mui/material/Button";
-
 import Forfun from "./forfun";
 import Family from "./family/family";
 import Askhow from "./askhow";
 import { getWindowSize } from "../header/header"
-
 import "./about.scss";
-
 const About = () => {
 	const [bigWin, setBigWin] = useState(false);
 	const [forimg, setForimg] = useState(false);
@@ -17,26 +14,20 @@ const About = () => {
 	const [askhow, setAskhow] = useState(false);
 	const [inpValue, setInpValue] = useState("");
 	const [windowSize, setWindowSize] = useState(getWindowSize());
-
 	const ltaRef = useRef(null);
-
 	useEffect(() => {
 		function handleWindowResize() {
 			setWindowSize(getWindowSize());
 		}
-
 		window.addEventListener("resize", handleWindowResize);
-
 		return () => {
 			window.removeEventListener("resize", handleWindowResize);
 		};
 	}, []);
-
 	useEffect(() => {
 		if(windowSize.innerWidth >=640 )setBigWin(true);
 		if(windowSize.innerWidth <=641 )setBigWin(false)
 	}, [windowSize]);
-
 	const checkValue = (e) => {
 		e.preventDefault();
 		const v = inpValue.toLowerCase().replace(/ /g, "");
@@ -45,7 +36,6 @@ const About = () => {
 		}
 		return;
 	};
-
 	if (family === "") {
 		return (
 			<div className="app__about pr">
@@ -57,8 +47,7 @@ const About = () => {
 						<p className="h text-4xl fw-800 mt-30 mb-30 drop-shadow-lg">
 							Welcome to{" "}
 							<span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
-								{" "}
-								My Portfolio website{" "}
+								My Portfolio website
 							</span>
 						</p>
 						<p className="fs-2 fw-600 mb-20 drop-shadow-sm">
@@ -212,5 +201,4 @@ const About = () => {
 		return <Family />;
 	}
 };
-
 export default About;

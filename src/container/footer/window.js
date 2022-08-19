@@ -1,32 +1,4 @@
-import { motion } from "framer-motion";
-import { AiFillCloseCircle } from "react-icons/ai";
 import { images } from '../../constants'
-import { client } from "../../client";
-const container = {
-	hidden: { opacity: 1, scale: 0 },
-	visible: {
-		opacity: 1,
-		scale: 1,
-		transition: {
-			delayChildren: 0.2,
-			staggerChildren: 0.2,
-		},
-	},
-};
-const item = {
-	hidden: { scale: 0 },
-	visible: {
-		scale: 1,
-	},
-};
-const cv = {
-	expanded: {
-		height: "20em",
-	},
-	hide: {
-		height: "3em",
-	},
-};
 const Window = () => {
 	 const handleClick = (e) => {
 		if(e.target.id === "1")

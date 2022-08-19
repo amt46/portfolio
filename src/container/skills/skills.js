@@ -1,13 +1,9 @@
-import React, { useEffect, useState, useRef } from "react";
-import { images } from "../../constants";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-
 import { useClickOutside } from "react-click-outside-hook";
-
 import { getWindowSize } from "../header/header";
 import { client, urlFor } from "../../client";
 import "./skills.scss";
-
 const container = {
 	hidden: { opacity: 1, scale: 0 },
 	visible: {
@@ -19,14 +15,12 @@ const container = {
 		},
 	},
 };
-
 const item = {
 	hidden: { opacity: 0 },
 	visible: {
 		opacity: 1,
 	},
 };
-
 const Skills = () => {
 	const [windowSize, setWindowSize] = useState(getWindowSize());
 	const [skills, setSkills] = useState([]);
@@ -34,15 +28,12 @@ const Skills = () => {
 	const [ih, setIh] = useState("");
 	const [rate, setRate] = useState(0);
 	const [ref, hasClickedOutside] = useClickOutside();
-	const sb = useRef();
-
 	useEffect(() => {
 		if (hasClickedOutside) {
 			setSs(null);
 			setRate(0);
 		}
 	}, [hasClickedOutside]);
-
 	const getData = () => {
 		const query = '*[_type == "skills"]';
 		client
@@ -60,7 +51,6 @@ const Skills = () => {
 		getData();
 		if (navigator.onLine) getData();
 	}, []);
-
 	useEffect(() => {
 		function handleWindowResize() {
 			setWindowSize(getWindowSize());
@@ -72,10 +62,8 @@ const Skills = () => {
 			window.removeEventListener("resize", handleWindowResize);
 		};
 	}, []);
-
 	var timer;
 	let counter = 0;
-
 	const getRate = (e, a) => {
 		setRate(0);
 		const position = e.target.getBoundingClientRect();
@@ -86,8 +74,6 @@ const Skills = () => {
 				ele.style.left = "-150px";
 			}
 		}
-
-		console.log("position", position.left + position.width);
 		clearInterval(timer);
 		timer = setInterval(() => {
 			if (counter === a.rate) {
@@ -100,7 +86,6 @@ const Skills = () => {
 			counter++;
 		}, ss?.rate / 1000);
 	};
-
 	return (
 		<motion.div
 			variants={container}
@@ -284,5 +269,4 @@ const Skills = () => {
 		</motion.div>
 	);
 };
-
 export default Skills;

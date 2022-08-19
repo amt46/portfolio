@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FaFacebookF, FaTwitter } from "react-icons/fa";
 import { IoLogoInstagram } from "react-icons/io";
 import { FiYoutube } from "react-icons/fi";
-
 const handleClick = (e, i) => {
 	if(i.name === "Facebook"){
 	window.open(`${i.link}`);
@@ -11,7 +10,6 @@ const handleClick = (e, i) => {
 		return
 	}
 };
-
 export const icons = [
 		{
 			icon: FaFacebookF,
@@ -60,5 +58,4 @@ const Social = ({ classNames }) => {
 		</div>
 	);
 };
-
 export default Social;

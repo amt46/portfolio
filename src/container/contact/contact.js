@@ -1,14 +1,10 @@
-import React, { useState, useRef } from "react";
+import { useState, useRef } from "react";
 import Button from "@mui/material/Button";
-
 import { motion, AnimatePresence } from 'framer-motion'
-
 import { BsFillPhoneFill } from "react-icons/bs";
-
 import MoonLoader from "react-spinners/MoonLoader";
 import { client } from "../../client";
 import "./contact.scss";
-
 const Contact = () => {
 	const [formData, setFormData] = useState({
 		name: "",
@@ -18,37 +14,29 @@ const Contact = () => {
 	const [isFormSub, setIsFormSub] = useState(false);
 	const [loading, setLoading] = useState(false);
 	const [ mes, setMessage ] = useState("Send")
-
 	const tu = useRef(null);
 	const toh =useRef(null)
-
 	const handleChange = (e) => {
 		if(e.target) setMessage("Send")
-
 		setMessage("Send")
 		const { name, value } = e.target;
-
 		setFormData({ ...formData, [name]: value });
 	};
-
 	const handleSubmit = () => {
 		const { name, email, message } = formData;
 		if (name === "" || email === "" || message === "") return setMessage("Please fill all fields :(");
 		setLoading(true);
-
 		const contact = {
 			_type: "contact",
 			name: name,
 			email: email,
 			message: message,
 		};
-
 		client.create(contact).then(() => {
 			setLoading(false);
 			setIsFormSub(true);
 		});
 	};
-
 	return (
 		<div className="wr-flex w-100 c-c">
 			<div className="wr-flex w-95 flex-wrap">
@@ -102,5 +90,4 @@ const Contact = () => {
 		</div>
 	);
 };
-
 export default Contact;

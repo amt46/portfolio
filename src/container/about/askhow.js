@@ -1,9 +1,6 @@
-import React from "react";
 import { CgClose } from "react-icons/cg";
 import { IoCaretBackOutline } from "react-icons/io5";
-
 import Button from "@mui/material/Button";
-
 const Askhow = ({setAskhow, setAboutMe, checkValue, setInpValue, inpValue}) => {
 	return (
 		<div className="popup pr">
@@ -45,5 +42,4 @@ const Askhow = ({setAskhow, setAboutMe, checkValue, setInpValue, inpValue}) => {
 		</div>
 	);
 };
-
 export default Askhow;

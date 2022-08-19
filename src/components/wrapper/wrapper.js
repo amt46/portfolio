@@ -1,8 +1,5 @@
-import React from "react";
-
 import Social from "./social";
 import "./wrapper.scss";
-
 const Wrapper = (Component, classNames, idName, pageRef) => () => {
 	const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
 	return (
@@ -25,5 +22,4 @@ const Wrapper = (Component, classNames, idName, pageRef) => () => {
 		</div>
 	);
 };
-
 export default Wrapper;

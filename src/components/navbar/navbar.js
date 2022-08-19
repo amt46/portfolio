@@ -1,11 +1,8 @@
-import React, { useState, useEffect } from "react";
+import { useState } from "react";
 import "./navbar.scss";
-
 import Link from "./link/link";
-
 const Navbar = ({ refArray }) => {
 	const [ cls, setCls ] = useState('')
-
 	return (
 		<div
 			className={`${cls} app__navbar tr`}
@@ -15,5 +12,4 @@ const Navbar = ({ refArray }) => {
 		</div>
 	);
 };
-
 export default Navbar;

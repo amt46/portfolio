@@ -1,37 +1,28 @@
 import { useRef, useState, useEffect } from "react";
-
 import Button from "@mui/material/Button";
 import Tilt from "react-parallax-tilt";
 import { motion, AnimatePresence } from "framer-motion";
-
 import { images } from "../../constants/index";
 import "./header.scss";
-
 export  function getWindowSize() {
 	const { innerWidth, innerHeight } = window;
 		return { innerWidth, innerHeight };
 }
-
 const Header = ({ homeRef }) => {
 	const [isImg, setIsImg] = useState(false);
 	const [windowSize, setWindowSize] = useState(getWindowSize());
-
 	const projectsRef = useRef(null);
 	const skillsRef = useRef(null);
 	const img2 = useRef(null)
-
 	useEffect(() => {
 		function handleWindowResize() {
 			setWindowSize(getWindowSize());
 		}
-
 		window.addEventListener("resize", handleWindowResize);
-
 		return () => {
 			window.removeEventListener("resize", handleWindowResize);
 		};
 	}, []);
-
 	const skills = [
 		{ name: "Node Js", image: images.node, class: "njs" },
 		{ name: "React", image: images.react, class: "r" },
@@ -39,7 +30,6 @@ const Header = ({ homeRef }) => {
 		{ name: "Sass", image: images.sass, class: "s" },
 		{ name: "Redux", image: images.redux, class: "rd" },
 	];
-
 	const hoverEffect = (e) => {
 		var x =
 			e.pageX - e.target.offsetLeft - e.target.offsetParent.offsetLeft;
@@ -47,7 +37,6 @@ const Header = ({ homeRef }) => {
 		e.target.style.setProperty("--x", x + "px");
 		e.target.style.setProperty("--y", y + "px");
 	};
-
 	return (
 		<div ref={homeRef} className="app__header flex w-100 pr">
 			<Tilt className="img1 p-40 flex-auto w-32">
@@ -161,5 +150,4 @@ const Header = ({ homeRef }) => {
 		</div>
 	);
 };
-
 export default Header;

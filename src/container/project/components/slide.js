@@ -1,14 +1,9 @@
 import { motion } from 'framer-motion'
-
 import { BsGithub } from "react-icons/bs";
 import { MdEmojiEmotions } from "react-icons/md";
-
 import { urlFor } from "../../../client";
 import Button from "@mui/material/Button";
-
-
 const Slide = ({p,po,setPo, onr, onl}) => {
-	
 	return (
 			<motion.div className="pc w-100 h-100 pr">
 				{p?.map((i, j) => (
@@ -64,5 +59,4 @@ const Slide = ({p,po,setPo, onr, onl}) => {
 			</motion.div>
 	)
 }
-
 export default Slide

@@ -49,11 +49,10 @@
 	}
 }
 
-
 .home {
 	background: rgba(255, 255, 255, 0.3);
-	backdrop-filter: blur(4px);
-	-webkit-backdrop-filter: blur(4px);
+	backdrop-filter: blur(3px);
+	-webkit-backdrop-filter: blur(3px);
 
 	.button {
 		color: #fff;
@@ -92,6 +91,7 @@
 .projects-blur {
 	backdrop-filter: blur(4px);
 	-webkit-backdrop-filter: blur(4px);
+	box-shadow: 0 0 10px rgba(0,0,0,.1);
 	.button {
 		color: #fff;
 	}
@@ -99,9 +99,20 @@
 	.slider {
 		background-color: #fff;
 	}
-
-
 }
+
+.contact-blur {
+	backdrop-filter: blur(4px);
+	-webkit-backdrop-filter: blur(4px);
+	.button {
+		color: #2d3236;
+	}
+
+	.slider {
+		background-color: #2d3236;
+	}
+}
+
 
 .projects {
 	.button {

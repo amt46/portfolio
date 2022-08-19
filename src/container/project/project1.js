@@ -1,16 +1,12 @@
 import { useState } from "react";
-import { motion, AnimatePresence, AnimateSharedLayout } from "framer-motion";
-
+import { motion, AnimatePresence } from "framer-motion";
 import { BsGithub } from "react-icons/bs";
 import { BsFillInfoCircleFill } from "react-icons/bs";
 import { AiFillCloseCircle } from "react-icons/ai";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import { MdEmojiEmotions } from "react-icons/md";
-
 import Button from "@mui/material/Button";
-
 import { urlFor } from "../../client";
-
 const container = {
 	hidden: { opacity: 1, scale: 0 },
 	visible: {
@@ -22,14 +18,12 @@ const container = {
 		},
 	},
 };
-
 const item = {
 	hidden: { opacity: 0 },
 	visible: {
 		opacity: 1,
 	},
 };
-
 const Project1 = ({ p }) => {
 	const [si, setSi] = useState(null);
 	return (
@@ -148,5 +142,4 @@ const Project1 = ({ p }) => {
 		</div>
 	);
 };
-
 export default Project1;

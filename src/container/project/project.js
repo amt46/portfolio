@@ -1,27 +1,20 @@
-import React, { useEffect, useState } from "react";
-
+import { useEffect, useState } from "react";
 import { IoChevronForward, IoChevronBack } from "react-icons/io5";
 import { HiOutlineViewGrid } from "react-icons/hi";
 import { VscSplitHorizontal } from "react-icons/vsc";
-
 import { motion, AnimatePresence } from "framer-motion";
-
 import { client, urlFor } from "../../client";
 import Project1 from "./project1";
 import Slide from "./components/slide";
-
 import "./project2.scss";
-
 const Project = ({ projectsRef }) => {
 	const [g, setG] = useState(false);
 	const [p, setP] = useState([]);
 	const [po, setPo] = useState(0);
 	const [ online, setOnline ] = useState(false)
-
 	useEffect(() => {
 		if(online) getData()
 	},[online])
-
 	const getData = async () => {
 		console.log("i am calling");
 		const query = '*[_type == "projects"]';
@@ -32,12 +25,10 @@ const Project = ({ projectsRef }) => {
 			})
 			.catch((err) => console.log(err));
 	};
-
 	useEffect(() => {
 		console.log("i call");
 		getData();
 	}, []);
-
 	const onr = () => {
 		if (po < p.length - 1) {
 			setPo(po + 1);
@@ -48,7 +39,6 @@ const Project = ({ projectsRef }) => {
 			setPo(po - 1);
 		}
 	};
-
 	function poopityScoop() {
 		window.ononline = (event) => {
 			console.log("Back Online");
@@ -165,5 +155,4 @@ const Project = ({ projectsRef }) => {
 		</div>
 	);
 };
-
 export default Project;
