@@ -77,7 +77,6 @@ const Skills = () => {
 		clearInterval(timer);
 		timer = setInterval(() => {
 			if (counter === a.rate) {
-				console.log("equal");
 				clearInterval(timer);
 				return;
 			}

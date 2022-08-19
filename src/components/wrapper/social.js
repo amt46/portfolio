@@ -4,7 +4,7 @@ import { FaFacebookF, FaTwitter } from "react-icons/fa";
 import { IoLogoInstagram } from "react-icons/io";
 import { FiYoutube } from "react-icons/fi";
 const handleClick = (e, i) => {
-	if(i.name === "Facebook"){
+	if(i.label === "Facebook"){
 	window.open(`${i.link}`);
 	} else {
 		return

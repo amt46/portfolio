@@ -29,7 +29,6 @@ const Askhow = ({setAskhow, setAboutMe, checkValue, setInpValue, inpValue}) => {
 					<input
 						onChange={(e) => {
 							setInpValue(e.target.value);
-							console.log(inpValue);
 						}}
 						type="text"
 						placeholder="Enter Here"

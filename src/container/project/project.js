@@ -11,12 +11,7 @@ const Project = ({ projectsRef }) => {
 	const [g, setG] = useState(false);
 	const [p, setP] = useState([]);
 	const [po, setPo] = useState(0);
-	const [ online, setOnline ] = useState(false)
-	useEffect(() => {
-		if(online) getData()
-	},[online])
 	const getData = async () => {
-		console.log("i am calling");
 		const query = '*[_type == "projects"]';
 		await client
 			.fetch(query)
@@ -26,7 +21,6 @@ const Project = ({ projectsRef }) => {
 			.catch((err) => console.log(err));
 	};
 	useEffect(() => {
-		console.log("i call");
 		getData();
 	}, []);
 	const onr = () => {
@@ -39,18 +33,6 @@ const Project = ({ projectsRef }) => {
 			setPo(po - 1);
 		}
 	};
-	function poopityScoop() {
-		window.ononline = (event) => {
-			console.log("Back Online");
-			setOnline(true)
-		};
-
-		window.onoffline = (event) => {
-			console.log("Connection Lost");
-			setOnline(false)
-		};
-	}
-	poopityScoop();
 	return (
 		<div ref={projectsRef} className="pm wr-flex w-100 h-90">
 			{p.length === 0 && (

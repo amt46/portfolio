@@ -3,7 +3,7 @@ import Button from "@mui/material/Button";
 import Forfun from "./forfun";
 import Family from "./family/family";
 import Askhow from "./askhow";
-import { getWindowSize } from "../header/header"
+import { getWindowSize } from "../header/header";
 import "./about.scss";
 const About = () => {
 	const [bigWin, setBigWin] = useState(false);
@@ -15,6 +15,7 @@ const About = () => {
 	const [inpValue, setInpValue] = useState("");
 	const [windowSize, setWindowSize] = useState(getWindowSize());
 	const ltaRef = useRef(null);
+	const skillRef = useRef(null)
 	useEffect(() => {
 		function handleWindowResize() {
 			setWindowSize(getWindowSize());
@@ -25,8 +26,8 @@ const About = () => {
 		};
 	}, []);
 	useEffect(() => {
-		if(windowSize.innerWidth >=640 )setBigWin(true);
-		if(windowSize.innerWidth <=641 )setBigWin(false)
+		if (windowSize.innerWidth >= 640) setBigWin(true);
+		if (windowSize.innerWidth <= 641) setBigWin(false);
 	}, [windowSize]);
 	const checkValue = (e) => {
 		e.preventDefault();
@@ -36,10 +37,26 @@ const About = () => {
 		}
 		return;
 	};
+	const clickBtn = (e,i) => {
+		if(e.target.id === "0"){
+			setAboutMe(i);
+			setAskhow(false)
+		}	
+		if(e.target.id === "1"){
+			console.log("I will be update about me")
+		}
+		if(e.target.id === "2"){
+			skillRef.current.click()
+		}
+	};
 	if (family === "") {
 		return (
 			<div className="app__about pr">
 				<a ref={ltaRef} style={{ display: "none" }} href="#about">
+					none
+				</a>
+
+				<a ref={skillRef} style={{ display: "none" }} href="#skills">
 					none
 				</a>
 				<div className="mt-10 wr-flex pr">
@@ -53,7 +70,11 @@ const About = () => {
 						<p className="fs-2 fw-600 mb-20 drop-shadow-sm">
 							What do I do and What's in it for you?
 						</p>
-						<div className={`forcontent hpx-300 ${readMore ? "sy ss" : ""}`}>
+						<div
+							className={`forcontent hpx-300 ${
+								readMore ? "sy ss" : ""
+							}`}
+						>
 							<p className="p-t">
 								My goal is Mobile Developer. I want to use
 								Javascript for this and React Native. Because I
@@ -66,7 +87,9 @@ const About = () => {
 									<span
 										onClick={() => setReadMore(!readMore)}
 									>
-									{`${readMore ? "see less" : "see more"}...`}
+										{`${
+											readMore ? "see less" : "see more"
+										}...`}
 									</span>
 								)}
 							</p>
@@ -154,7 +177,9 @@ const About = () => {
 				</div>
 				{aboutMe === "I know you" && (
 					<div className="flex popup">
-						<p className="mb-20 drop-shadow-sm fw-500">Do you want to enter my family page?</p>
+						<p className="mb-20 drop-shadow-sm fw-500">
+							Do you want to enter my family page?
+						</p>
 						<div className="b-c">
 							<Button
 								onClick={() => {
@@ -181,13 +206,11 @@ const About = () => {
 				)}
 				{forimg && <Forfun setForimg={setForimg} />}
 				<div className="button w-100 wr-flex flex-wrap sm:mt-[10px]">
-					{["I know you", "About me", "My Skills"].map((i) => (
+					{["I know you", "About me", "My Skills"].map((i, k) => (
 						<Button
-							style={{borderRadius: "10px"}}
-							onClick={() => {
-								setAboutMe(i);
-								setAskhow(false);
-							}}
+							id={k}
+							style={{ borderRadius: "10px" }}
+							onClick={(e) => clickBtn(e, i)}
 							key={i}
 							className={`${readMore ? "sh" : ""}`}
 						>

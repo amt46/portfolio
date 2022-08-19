@@ -45,7 +45,7 @@ const Project1 = ({ p }) => {
 						key={k}
 						className="gp tr m-10 p-10 bdrr-5 text-black bg-white hover:bg-zinc-100"
 					>
-						<motion.div className="g w-100 hpx-150 relative">
+						<motion.div className="g w-100 h-[150px] relative">
 							<motion.img
 								className="img w-full h-full object-cover bdrr-5 mb-10"
 								src={urlFor(i.imageurl)}
@@ -93,9 +93,9 @@ const Project1 = ({ p }) => {
 					<motion.div
 						initial={{ opacity: 0 }}
 						animate={{ opacity: 1 }}
-						className="z text-black pb bdrr-10 p-10 w-80 h-70 overflow-hidden sm:overflow-y-auto ss bg-white fixed top-[20%] left-0 right-0 mx-auto"
+						className="z text-black pb bdrr-10 w-80 h-70 overflow-hidden p-10 overflow-y-auto ss bg-white fixed top-[20%] left-0 right-0 mx-auto"
 					>
-						<motion.div className="cl wpx-30 hpx-30 ml-[auto]"
+						<motion.div className="cl wpx-30 hpx-30 t-10 r-10 ml-[auto]"
 							initial={{opacity:0}}
 							animate={{opacity:1}}
 							exit={{opacity: 0}}
@@ -109,8 +109,8 @@ const Project1 = ({ p }) => {
 						<p className="fw-600 p nt text-gray-700 text-center p-0 m-0">
 							{si.name}
 						</p>
-						<div className="w-100 flex flex-wrap">
-							<div className="w-50 p2-img max-h-[300px] mt-20 mx-auto">
+						<div className="w-100 a flex">
+							<div className="ml-10 b w-50 p2-img max-h-[300px] mt-20 mx-auto">
 								<img
 									className="drop-shadow-sm w-100 h-100 object-cover bdrr-5"
 									src={urlFor(si.imageurl)}
@@ -119,12 +119,9 @@ const Project1 = ({ p }) => {
 							</div>
 							<div className="wpx-500 p-20 h-100">
 								<div className="cc text-gray-600 drop-shadow-sm hpx-250 overflow-y-auto ss">
-									<p>{si.desc}</p>
-									<p>{si.desc}</p>
-									<p>{si.desc}</p>
-									<p>{si.desc}</p>
+									<p>{si.desc}{si.desc}{si.desc}{si.desc}</p>
 								</div>
-								<div className="mt-10 btn btn2 min-w-[200px]">
+								<div className="mt-10 btn btn2 mx-auto min-w-[200px]">
 									<Button className="drop-shadow-lg">
 										<BsGithub size={20} />
 										Github
