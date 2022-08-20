@@ -190,13 +190,17 @@ const Skills = () => {
 									src={urlFor(a.imageurl)}
 									alt={a.name}
 								/>
+							<AnimatePresence>
 								{ss?.name === a.name && (
-									<div
+									<motion.div
+										initial={{opacity: 0}}
+										animate={{opacity: 1}}
+										exit={{opacity: 0}}
 										ref={ref}
 										id="skill_bar"
 										className="skill-bar"
 									>
-										<div className="pr">
+										<motion.div className="pr">
 											<motion.div
 												style={
 													rate === 0
@@ -234,7 +238,7 @@ const Skills = () => {
 													/>
 												</svg>
 											</motion.div>
-											<div className="s-b">
+											<motion.div className="s-b">
 												<motion.div
 													initial={{ width: 30 }}
 													animate={{
@@ -250,16 +254,19 @@ const Skills = () => {
 													}
 													className="h-100 tr w-100 bg-blue-400 bdrr-5"
 												/>
-											</div>
-										</div>
-										<p className="f-b text-blue-400 nt fw-600 drop-shadow-xl text-center">
+											</motion.div>
+										</motion.div>
+									<AnimatePresence>
+										<motion.p initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity:0}} className="f-b text-blue-400 nt fw-600 drop-shadow-xl text-center">
 											{a.name
 												.split(" ")
 												.slice(0, 3)
 												.join(" ")}
-										</p>
-									</div>
+										</motion.p>
+									</AnimatePresence>
+									</motion.div>
 								)}
+							</AnimatePresence>
 							</motion.div>
 						))}
 					</motion.div>

@@ -85,6 +85,14 @@
 	}
 }
 
+.home-social, .projects-social, .contact-social, .projects-social, .skills-social {
+	font-size: 1.3rem;
+
+	&:hover{
+		font-size: 1.2rem;
+	}
+}
+
 .about-social {
 	background-color: #2190ff;
 	color: #fff;

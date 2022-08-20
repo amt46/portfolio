@@ -1,68 +1,80 @@
-import { useState, useRef } from "react";
-import { motion } from 'framer-motion'
-import { CgClose } from "react-icons/cg";
+import { motion } from "framer-motion";
+import { IoClose } from "react-icons/io5";
+import { imgs } from "./images";
+import Carousel from "framer-motion-carousel";
 import { IoChevronForward, IoChevronBack } from "react-icons/io5";
-import { images } from "../../constants";
-const forFun = [images.forfun, "https://images.unsplash.com/photo-1587620962725-abab7fe55159?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1031&q=80", "https://images.unsplash.com/photo-1529465230221-a0d10e46fcbb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80", "https://images.unsplash.com/photo-1511376777868-611b54f68947?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"];
-const Forfun = (props) => {
-	const [showImg, setShowImg] = useState(0);
-	const imgRef = useRef();
-	const length = forFun.length;
-	const forWard = () => {
-		setShowImg(showImg === length - 1 ? 0 : showImg + 1);
-	};
-	 
-	const backWard = () => {
-		setShowImg(showImg === 0 ? length - 1 : showImg - 1);
-	}
-	if (!Array.isArray(forFun || forFun.length <= 0)){
-		return null;
-	}
+
+const Forfun = ({ setForimg }) => {
+
 	return (
-		<div className="fun">
-			<div className="forfun">
-				<div className="box app__flex pr">
-					<div className="flex popheader">
-						<p>That is crazy!</p>
-						<div
-							onClick={() => props.setForimg(false)}
-							className="close cp wr-flex pa t-10 r-10"
-						>
-							<CgClose />
-						</div>
-					</div>
-					<div className="app__flex cp img">
-						<motion.div whileTap={{scale: .9}} whileHover={{color: "rgba(0,0,0,.8)"}} onClick={backWard} className="text-black icon-img">
-							<IoChevronBack/>
-						</motion.div>
-						{forFun.map((i, index) => (
-							<div key={i}>
-								{showImg === index && (
-									<img ref={imgRef} src={i} alt={i}/>
-								)}
-							</div>
-						))}
-						<motion.div whileTap={{scale: .9}} whileHover={{color: "rgba(0,0,0,.8)"}} onClick={forWard} className="text-black icon-img">
-							<IoChevronForward/>
-						</motion.div>
-					</div>
-					<div className="app__flex cp">
-						{forFun.map((i) => (
+		<motion.div 
+			initial={{y: "-100vh", opacity: 0}}
+			animate={{y: 0, opacity: 1}}
+			exit={{y: "-100vh", opacity: 0}}
+			className="z bdrr-20 forfun pa t-50 l-0 r-0 mx-auto bg-white">
+			<motion.div className="h-[10%] i-c flex justify-end items-center">
+				<motion.p className="mr-100">That's crazy</motion.p>
+				<motion.div
+					onClick={() => setForimg(false)}
+					className="m-10 text-xl cp"
+				>
+					<IoClose />
+				</motion.div>
+			</motion.div>
+			<motion.div className="h-[90%] pr">
+				<motion.div>
+					<Carousel
+						interval={5000}
+						renderArrowLeft={({ handlePrev, activeIndex }) => (
 							<motion.div
-								whileHover={{scale: 1.1}}
-								style={showImg === forFun.indexOf(i) ? {backgroundColor: "#2190ff"} : {}}
-								onClick={() => {
-									setShowImg(forFun.indexOf(i))
-									imgRef.current.src = i
-								}}
+								onClick={() => handlePrev()}
+								className="wpx-30 text-2xl text-white hpx-30 wr-flex pa l-0 fbi cp"
+							>
+								<IoChevronBack />
+							</motion.div>
+						)}
+						renderArrowRight={({ handleNext, activeIndex }) => (
+							<motion.div
+								onClick={() => handleNext()}
+								className="wpx-30 hpx-30 wr-flex text-2xl text-white pa r-0 fbi cp"
+							>
+								<IoChevronForward />
+							</motion.div>
+						)}
+						renderDots={({ setActiveIndex, activeIndex }) => (
+							<motion.div className="pa b-10 l-0 r-0 mx-auto wr-flex w-50">
+								{imgs.map((i, k) => (
+									<motion.div
+										style={
+											activeIndex === k
+												? { backgroundColor: "red" }
+												: {}
+										}
+										className="hpx-12 wpx-12 drop-shadow-sm m-5 bdr-50 bg-white cp"
+										key={k}
+										onClick={() =>
+											setActiveIndex(k)
+										}
+									/>
+								))}
+							</motion.div>
+						)}
+					>
+						{imgs.map((item, i) => (
+							<img
+								className="hpx-300 object-cover"
+								draggable="false"
+								src={item}
 								key={i}
-								className="nav"
+								width="100%"
+								alt=""
 							/>
 						))}
-					</div>
-				</div>
-			</div>
-		</div>
+					</Carousel>
+				</motion.div>
+			</motion.div>
+		</motion.div>
 	);
 };
+
 export default Forfun;

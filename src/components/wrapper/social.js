@@ -20,17 +20,17 @@ export const icons = [
 		{ icon: IoLogoInstagram, label: "Instagram", link: "" },
 		{ icon: FiYoutube, label: "YouTube", link: "" },
 	];
-
-
 const Social = ({ classNames }) => {
 	const [tooltip, setTooltip] = useState(null);
 
 	return (
-		<div className="app__social">
-			{icons.map((i) => {
+		<motion.div  className="app__social">
+			{icons.map((i,k) => {
 				const Icon = i.icon;
 				return (
-					<div
+					<motion.div
+						whileInView={{opacity: [0,1], scale: [0,1]}}
+						transition={{duration: .3, type: "spring", bounce: 0.25 }}
 						onClick={(e) => handleClick(e, i)}
 						onMouseEnter={() => setTooltip(i.label)}
 						onMouseLeave={() => setTooltip(null)}
@@ -52,10 +52,10 @@ const Social = ({ classNames }) => {
 								</motion.p>
 							)}
 						</AnimatePresence>
-					</div>
+					</motion.div>
 				);
 			})}
-		</div>
+		</motion.div>
 	);
 };
 export default Social;

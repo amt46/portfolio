@@ -47,13 +47,13 @@ const Project = ({ projectsRef }) => {
 			{g && <Project1 p={p} />}
 			{p.length > 0 && (
 				<AnimatePresence>
-					<div
+					<motion.div
+						whileInView={{ scale: [0, 1.4, 1] }}
 						onClick={() => setG(!g)}
 						className="c-p z pa t-70 r-20 cp"
 					>
 						{!g ? (
 							<motion.div
-								whileInView={{ scale: [0.7, 1.1, 1] }}
 								whileTap={{ scale: 0.9 }}
 								className="drop-shadow-xl"
 							>
@@ -68,7 +68,7 @@ const Project = ({ projectsRef }) => {
 								<VscSplitHorizontal size={30} />
 							</motion.div>
 						)}
-					</div>
+					</motion.div>
 				</AnimatePresence>
 			)}
 			{!g && (
@@ -92,6 +92,7 @@ const Project = ({ projectsRef }) => {
 			)}
 			{!g && (
 				<motion.button
+					whileInView={po === 0 ? {} : {opacity: [ 0,1 ], scale: [0,1]}}
 					disabled={po === 0 ? true : false}
 					whileTap={po === 0 ? {} : { scale: 0.9 }}
 					style={
@@ -108,6 +109,7 @@ const Project = ({ projectsRef }) => {
 			{!g && <Slide p={p} po={po} setPo={setPo} onr={onr} onl={onl} />}
 			{!g && (
 				<motion.button
+					whileInView={po === p.length - 1 ? {} : {opacity: [ 0,1 ], scale: [0,1]}}
 					disabled={po === p.length - 1 ? true : false}
 					whileTap={po === p.length - 1 ? {} : { scale: 0.9 }}
 					style={

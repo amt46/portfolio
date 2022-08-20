@@ -230,6 +230,13 @@
 	}
 }
 
+@for $i from 1 through 1000 {
+	.mr-#{$i} {
+		margin-right: #{$i}px;
+	}
+}
+
+
 @for $i from 1 through 100 {
 	.mt-#{$i} {
 		margin-top: #{$i}px;

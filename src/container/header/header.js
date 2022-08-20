@@ -40,17 +40,25 @@ const Header = ({ homeRef }) => {
 	return (
 		<div ref={homeRef} className="app__header flex w-100 pr">
 			<Tilt className="img1 p-40 flex-auto w-32">
-				<div className="w-full h-[500px] mx-auto">
+				<motion.div
+					whileInView={{opacity: [0,1], x: [-100,0]}}
+					transition={{duration: .8}}
+					className="w-full h-[500px] mx-auto"
+				>
 					<img
 						className="w-full h-full object-cover rounded-xl"
 						src={images.amt}
 						alt="amt"
 					/>
-				</div>
+				</motion.div>
 			</Tilt>
 			<div className="flex-auto w-64 p-40">
 				<div className="h-full rc flex flex-col justify-evenly">
-					<div className="">
+					<motion.div 
+						whileInView={{opacity: [0,1], x: [100,0]}}
+						transition={{duration: .8}}
+						className=""
+					>
 						<p className="h">
 							Junior Full Stack{" "}
 							<span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
@@ -61,7 +69,7 @@ const Header = ({ homeRef }) => {
 						<p className="nt fw-500 mt-20 mb-20">
 							Let Join your Development Team for My Experience
 						</p>
-					</div>
+					</motion.div>
 					<div ref={img2} className="img2 w-[350px] h-[500px] hidden">
 						<img
 							className="w-full h-full object-cover bdrr-10"
@@ -69,7 +77,11 @@ const Header = ({ homeRef }) => {
 							alt="amt"
 						/>
 					</div>
-					<div className="bc">
+					<motion.div
+						whileInView={{opacity: [0,1]}}
+						transition={{duration: .8, delay: .7}}
+						className="bc"
+					>
 						<Button
 							style={windowSize.innerWidth <= 640 ? {width: `${img2.current?.offsetWidth}px`}: {}}
 							className="btn"
@@ -100,12 +112,12 @@ const Header = ({ homeRef }) => {
 						>
 							none
 						</a>
-					</div>
+					</motion.div>
 				</div>
-				<div className="flex">
+				<motion.div whileInView={{opacity: [0,1]}} transition={{delay: 1, duration: .5}} className="flex">
 					{skills.map((i) => {
 						return (
-							<div
+							<motion.div
 								key={i.name}
 								className={`${i.class} sk wpx-70 pa`}
 							>
@@ -142,10 +154,10 @@ const Header = ({ homeRef }) => {
 										)}
 									</AnimatePresence>
 								</div>
-							</div>
+							</motion.div>
 						);
 					})}
-				</div>
+				</motion.div>
 			</div>
 		</div>
 	);
