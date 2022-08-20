@@ -4,7 +4,7 @@ import { FaFacebookF, FaTwitter } from "react-icons/fa";
 import { IoLogoInstagram } from "react-icons/io";
 import { FiYoutube } from "react-icons/fi";
 const handleClick = (e, i) => {
-	if(i.label === "Facebook"){
+	if(i.link !== ""){
 	window.open(`${i.link}`);
 	} else {
 		return
@@ -14,9 +14,9 @@ export const icons = [
 		{
 			icon: FaFacebookF,
 			label: "Facebook",
-			link: "https://www.facebook.com/aung.832003/",
+			link: "https://www.facebook.com/amt46",
 		},
-		{ icon: FaTwitter, label: "Twitter", link: "" },
+		{ icon: FaTwitter, label: "Twitter", link: "https://twitter.com/amt4621" },
 		{ icon: IoLogoInstagram, label: "Instagram", link: "" },
 		{ icon: FiYoutube, label: "YouTube", link: "" },
 	];
