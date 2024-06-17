@@ -1,8 +1,4 @@
-const Family = ({...props}) => {
-	return (
-		<div className="app__" >
-			Family
-		</div>
-	)
-}
-export default Family
+const Family = ({ ...props }) => {
+  return <div className="app__">Family</div>;
+};
+export default Family;
