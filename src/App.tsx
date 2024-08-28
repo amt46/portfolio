@@ -4,6 +4,7 @@ import { About, Contact, Footer, Header, Project, Skills } from "./container";
 import "./App.scss";
 import Navbar from "./components/navbar/navbar";
 import Wrapper from "./components/wrapper/wrapper";
+
 function App() {
   const homeRef = useRef();
   const aboutRef = useRef();
@@ -16,6 +17,7 @@ function App() {
   const ProjectWrap = Wrapper(Project, "projects", "projects", projectsRef);
   const SkillsWrap = Wrapper(Skills, "skills", "skills", skillsRef);
   const ContactWrap = Wrapper(Contact, "contact", "contact", contactRef);
+
   return (
     <div className="App">
       <Navbar refArray={refArray} />
